@@ -1,7 +1,6 @@
 package entry;
 
 public class UsersManager {
-	String userName;
+	String username;
 	String password;
-	
 }

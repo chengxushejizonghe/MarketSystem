@@ -3,7 +3,7 @@ package entry;
 import java.util.Date;
 
 public class Customer {
-	String name;
+	String username;
 	String id;
 	int balance;
 	String password;
