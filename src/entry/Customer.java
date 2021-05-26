@@ -9,5 +9,5 @@ public class Customer {
 	String password;
 	String realName;
 	Date creationTime;
-	
+	String phone;
 }
