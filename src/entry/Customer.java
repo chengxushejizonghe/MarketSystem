@@ -17,6 +17,11 @@ public class Customer {
 	Date creationTime;
 	/**联系电话*/
 	String phone;
+	/**
+	 * 会员等级：0,1,2,3
+	 * 会员等级为0为普通用户，创建新用户时默认为0级
+	 */
+	int level;
 
 	public String getUsername() {
 		return username;
