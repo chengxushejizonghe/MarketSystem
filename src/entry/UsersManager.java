@@ -2,15 +2,6 @@ package entry;
 
 public class UsersManager {
 	int id;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	String username;
 	String password;
 
@@ -28,5 +19,13 @@ public class UsersManager {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
