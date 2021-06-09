@@ -6,7 +6,7 @@ public class Customer {
 	/**用户名*/
 	String username;
 	/**用户编号*/
-	String id;
+	int id;
 	/**用户余额*/
 	int balance;
 	/**用户密码*/
@@ -31,11 +31,11 @@ public class Customer {
 		this.username = username;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

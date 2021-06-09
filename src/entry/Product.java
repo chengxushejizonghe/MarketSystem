@@ -1,8 +1,8 @@
 package entry;
 
 public class Product {
+	int id;
 	String productName;
-	String productId;
 	double price;
 	String type;
 
@@ -14,12 +14,12 @@ public class Product {
 		this.productName = productName;
 	}
 
-	public String getProductId() {
-		return productId;
+	public int getId() {
+		return id;
 	}
 
-	public void setProductId(String productId) {
-		this.productId = productId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public double getPrice() {

@@ -1,6 +1,16 @@
 package entry;
 
 public class UsersManager {
+	int id;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	String username;
 	String password;
 
