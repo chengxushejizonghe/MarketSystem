@@ -43,7 +43,6 @@ public class JDBCUtils {
 
     /**
      * 关闭所有资源连接
-     *
      * @param conn
      * @param ps
      * @param rs
