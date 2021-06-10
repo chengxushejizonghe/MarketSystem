@@ -1,9 +1,9 @@
 package entry;
 
 public class UsersManager {
-	int id;
-	String username;
-	String password;
+	private int id;
+	private String username;
+	private String password;
 
 	public String getUsername() {
 		return username;

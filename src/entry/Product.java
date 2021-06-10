@@ -6,23 +6,23 @@ public class Product {
 	/**
 	 * 编号
 	 */
-	int id;
+	private int id;
 	/**
 	 * 商品名称
 	 */
-	String productName;
+	private String productName;
 	/**
 	 * 商品价格
 	 */
-	double price;
+	private double price;
 	/**
 	 * 商品类型
 	 */
-	String type;
+	private String type;
 	/**
 	 * 生产日期
 	 */
-	Date productionDate;
+	private Date productionDate;
 
 	public String getProductName() {
 		return productName;
