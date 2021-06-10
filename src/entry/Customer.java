@@ -4,24 +4,26 @@ import java.util.Date;
 
 public class Customer {
 	/**用户名*/
-	String username;
+	private String username;
 	/**用户编号*/
-	int id;
+	private int id;
 	/**用户余额*/
-	int balance;
+	private int balance;
 	/**用户密码*/
-	String password;
+	private String password;
 	/**真实姓名*/
-	String realName;
+	private String realName;
 	/**注册时间*/
-	Date creationTime;
+	private Date creationTime;
 	/**联系电话*/
-	String phone;
+	private String contactPhone;
+	/**邮箱*/
+	private String email;
 	/**
 	 * 会员等级：0,1,2,3
 	 * 会员等级为0为普通用户，创建新用户时默认为0级
 	 */
-	int level;
+	private int level;
 
 	public String getUsername() {
 		return username;
@@ -71,11 +73,27 @@ public class Customer {
 		this.creationTime = creationTime;
 	}
 
-	public String getPhone() {
-		return phone;
+	public String getContactPhone() {
+		return contactPhone;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setContactPhone(String contactPhone) {
+		this.contactPhone = contactPhone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
 	}
 }
