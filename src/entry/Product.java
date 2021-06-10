@@ -23,6 +23,10 @@ public class Product {
 	 * 生产日期
 	 */
 	private Date productionDate;
+	/**
+	 * 商品数量
+	 */
+	private int quantity;
 
 	public String getProductName() {
 		return productName;
@@ -62,5 +66,13 @@ public class Product {
 
 	public void setProductionDate(Date productionDate) {
 		this.productionDate = productionDate;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 }
