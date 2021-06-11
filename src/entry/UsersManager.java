@@ -31,4 +31,13 @@ public class UsersManager {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	@Override
+	public String toString() {
+		return "UsersManager{" +
+				"id=" + id +
+				", username='" + username + '\'' +
+				", password='" + password + '\'' +
+				'}';
+	}
 }

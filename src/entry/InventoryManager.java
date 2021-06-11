@@ -31,4 +31,13 @@ public class InventoryManager {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	@Override
+	public String toString() {
+		return "InventoryManager{" +
+				"id=" + id +
+				", username='" + username + '\'' +
+				", password='" + password + '\'' +
+				'}';
+	}
 }

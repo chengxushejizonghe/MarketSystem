@@ -8,7 +8,7 @@ public class Customer {
 	/**用户编号*/
 	private int id;
 	/**用户余额*/
-	private int balance;
+	private double balance;
 	/**用户密码*/
 	private String password;
 	/**真实姓名*/
@@ -41,11 +41,11 @@ public class Customer {
 		this.id = id;
 	}
 
-	public int getBalance() {
+	public double getBalance() {
 		return balance;
 	}
 
-	public void setBalance(int balance) {
+	public void setBalance(double balance) {
 		this.balance = balance;
 	}
 
@@ -95,5 +95,20 @@ public class Customer {
 
 	public void setLevel(int level) {
 		this.level = level;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer{" +
+				"username='" + username + '\'' +
+				", id=" + id +
+				", balance=" + balance +
+				", password='" + password + '\'' +
+				", realName='" + realName + '\'' +
+				", creationTime=" + creationTime +
+				", contactPhone='" + contactPhone + '\'' +
+				", email='" + email + '\'' +
+				", level=" + level +
+				'}';
 	}
 }

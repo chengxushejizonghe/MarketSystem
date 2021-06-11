@@ -72,5 +72,24 @@ public class JDBCUtils {
             }
         }
     }
+
+    public static void releaseAll(Connection conn, Statement ps) {
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (ps != null) {
+            try {
+                ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
 }
 

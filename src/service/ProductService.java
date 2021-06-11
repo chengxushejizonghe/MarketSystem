@@ -5,5 +5,5 @@ package service;
  * @author
  * @create 2021-06-10-13:15
  */
-public class ProductService {
+public interface ProductService {
 }
