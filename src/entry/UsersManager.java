@@ -1,5 +1,8 @@
 package entry;
 
+/**
+ * 用户管理员
+ */
 public class UsersManager {
 	private int id;
 	private String username;

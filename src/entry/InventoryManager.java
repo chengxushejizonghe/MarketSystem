@@ -1,5 +1,8 @@
 package entry;
 
+/**
+ * 库存管理员
+ */
 public class InventoryManager {
 	private int id;
 	private String username;
