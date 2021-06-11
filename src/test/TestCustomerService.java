@@ -14,8 +14,8 @@ import java.util.List;
  */
 public class TestCustomerService {
     public static void main(String[] args) throws SQLException {
-        CustomerDao customerDao = new CustomerDao();
-        List<Customer> customerList = customerDao.findCustomers();
-        System.out.println(customerList);
+        CustomerService customerService = new CustomerServiceImpl();
+        List<Customer> customers = customerService.findCustomers();
+        System.out.println(customers);
     }
 }
