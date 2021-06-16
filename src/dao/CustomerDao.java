@@ -48,16 +48,16 @@ public class CustomerDao {
     /**
      * 查询所有消费者
      * @return 将查询得到的结果集用List返回
-     * @throws SQLException
      */
     public List<Customer> findCustomers() throws SQLException {
         Connection connection = JDBCUtils.getConnection();
         String sql = "select * from customer";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        PreparedStatement preparedStatement = null;
         //执行查询语句得到结果集
         ResultSet resultSet = null;
         List<Customer> customerList = null;
         try {
+            preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
 
             customerList = new ArrayList<>();
@@ -86,7 +86,37 @@ public class CustomerDao {
     /**
      * 删除用户
      */
-    public void deleteCustomer(){
+    public void deleteCustomer(int id) throws SQLException {
         Connection connection = JDBCUtils.getConnection();
+        String sql = "delete from customer where id = ?";
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,id);
+            preparedStatement.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            JDBCUtils.releaseAll(connection,preparedStatement);
+        }
+    }
+
+    /**
+     * 更新用户
+     */
+    public void updateCustomer(Customer customer){
+        Connection connection = JDBCUtils.getConnection();
+        String sql = "update customer "+
+                "set username = ?,password = ?,balance = ?,realName = ?,contactPhone = ?,email = ?,level = ? "+
+                "where id = ?";
+        PreparedStatement preparedStatement = null;
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtils.releaseAll(connection,preparedStatement);
+        }
     }
 }
