@@ -12,4 +12,5 @@ import java.util.List;
 public interface CustomerService {
     public void insertCustomer(Customer customer) throws SQLException;
     public List<Customer> findCustomers() throws SQLException;
+    public void deleteCustomer(int id) throws SQLException;
 }

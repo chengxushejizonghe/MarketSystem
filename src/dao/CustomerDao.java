@@ -112,7 +112,7 @@ public class CustomerDao {
         PreparedStatement preparedStatement = null;
         try{
             preparedStatement = connection.prepareStatement(sql);
-
+            preparedStatement.setString(1,customer.getUsername());
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {

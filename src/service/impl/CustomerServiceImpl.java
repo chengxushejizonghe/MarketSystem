@@ -22,11 +22,17 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void insertCustomer(Customer customer) throws SQLException {
+
         customerDao.insertCustomer(customer);
     }
 
     @Override
     public List<Customer> findCustomers() throws SQLException {
         return customerDao.findCustomers();
+    }
+
+    @Override
+    public void deleteCustomer(int id) throws SQLException {
+        customerDao.deleteCustomer(id);
     }
 }
