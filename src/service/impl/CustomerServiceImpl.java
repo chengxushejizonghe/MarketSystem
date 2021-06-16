@@ -13,7 +13,12 @@ import java.util.List;
  */
 
 public class CustomerServiceImpl implements CustomerService {
-    private CustomerDao customerDao;
+    private final CustomerDao customerDao;
+
+    public CustomerServiceImpl() {
+        customerDao = new CustomerDao();
+    }
+
 
     @Override
     public void insertCustomer(Customer customer) throws SQLException {
