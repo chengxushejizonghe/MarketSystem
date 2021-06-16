@@ -1,13 +1,12 @@
 package test;
 
-import dao.CustomerDao;
-import entry.Customer;
-import org.junit.Test;
-import service.CustomerService;
-import service.impl.CustomerServiceImpl;
-
 import java.sql.SQLException;
 import java.util.List;
+
+import org.junit.Test;
+
+import dao.CustomerDao;
+import entry.Customer;
 
 /**
  * 测试CustomerDao
