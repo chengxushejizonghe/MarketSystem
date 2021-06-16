@@ -87,6 +87,6 @@ public class CustomerDao {
      * 删除用户
      */
     public void deleteCustomer(){
-
+        Connection connection = JDBCUtils.getConnection();
     }
 }
