@@ -1,12 +1,12 @@
 package entry;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Customer {
-	/**用户名*/
-	private String username;
 	/**用户编号*/
 	private int id;
+	/**用户名*/
+	private String username;
 	/**用户余额*/
 	private double balance;
 	/**用户密码*/
@@ -14,7 +14,7 @@ public class Customer {
 	/**真实姓名*/
 	private String realName;
 	/**注册时间*/
-	private Date creationTime;
+	private LocalDateTime creationTime;
 	/**联系电话*/
 	private String contactPhone;
 	/**邮箱*/
@@ -65,11 +65,11 @@ public class Customer {
 		this.realName = realName;
 	}
 
-	public Date getCreationTime() {
+	public LocalDateTime getCreationTime() {
 		return creationTime;
 	}
 
-	public void setCreationTime(Date creationTime) {
+	public void setCreationTime(LocalDateTime creationTime) {
 		this.creationTime = creationTime;
 	}
 

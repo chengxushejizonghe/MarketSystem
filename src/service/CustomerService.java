@@ -10,7 +10,8 @@ import java.util.List;
  * @create 2021-06-09-19:13
  */
 public interface CustomerService {
-    public void insertCustomer(Customer customer) throws SQLException;
+    public boolean insertCustomer(Customer customer) throws SQLException;
     public List<Customer> findCustomers() throws SQLException;
-    public void deleteCustomer(int id) throws SQLException;
+    public boolean deleteCustomer(int id) throws SQLException;
+    public boolean updateCustomer(Customer customer) throws SQLException;
 }
