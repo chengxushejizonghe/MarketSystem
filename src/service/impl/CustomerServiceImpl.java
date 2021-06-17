@@ -1,6 +1,7 @@
 package service.impl;
 
 import dao.CustomerDao;
+import dao.CustomerDaoImpl;
 import entry.Customer;
 import service.CustomerService;
 
@@ -12,7 +13,11 @@ import java.util.List;
  */
 
 public class CustomerServiceImpl implements CustomerService {
-    private CustomerDao customerDao;
+    private static CustomerDao customerDao;
+
+    public CustomerServiceImpl() {
+        customerDao = new CustomerDaoImpl();
+    }
 
 
     @Override
