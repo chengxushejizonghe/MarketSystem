@@ -4,10 +4,6 @@ import entry.Customer;
 import utills.JDBCUtils;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +23,7 @@ public class CustomerDaoImpl extends BaseDao<Customer> implements CustomerDao{
                 "values(?,?,?,?,?,?)";
         boolean flag = update(conn,sql,customer.getUsername(),customer.getPassword(),customer.getBalance(),customer.getRealName()
         ,customer.getContactPhone(),customer.getEmail()) > 0;
-        JDBCUtils.releaseAll(conn,null);
+//        JDBCUtils.releaseAll(conn,null);
         return flag;
     }
 
@@ -38,7 +34,7 @@ public class CustomerDaoImpl extends BaseDao<Customer> implements CustomerDao{
     public List<Customer> findCustomers() {
         String sql = "select * from customer";
         List<Customer> customerList = getForList(conn,sql);
-        JDBCUtils.releaseAll(conn,null);
+//        JDBCUtils.releaseAll(conn,null);
         return customerList;
     }
 
@@ -48,7 +44,7 @@ public class CustomerDaoImpl extends BaseDao<Customer> implements CustomerDao{
     public boolean deleteCustomer(int id) {
         String sql = "delete from customer where id = ?";
         boolean flag = update(conn,sql,id) > 0;
-        JDBCUtils.releaseAll(conn,null);
+//        JDBCUtils.releaseAll(conn,null);
         return flag;
     }
 
@@ -57,11 +53,11 @@ public class CustomerDaoImpl extends BaseDao<Customer> implements CustomerDao{
      */
     public boolean updateCustomer(Customer customer){
         String sql = "update customer "+
-                "set username = ?,password = ?,balance = ?,realName = ?,contactPhone = ?,email = ?,level = ? "+
+                "set username = ?,password = ?,realName = ?,contactPhone = ?,email = ?,level = ? "+
                 "where id = ?";
-        boolean flag = update(conn,sql,customer.getUsername(),customer.getPassword(),customer.getBalance(),customer.getRealName(),
+        boolean flag = update(conn,sql,customer.getUsername(),customer.getPassword(),customer.getRealName(),
                 customer.getContactPhone(),customer.getEmail(),customer.getLevel(),customer.getId()) > 0;
-        JDBCUtils.releaseAll(conn,null);
+//        JDBCUtils.releaseAll(conn,null);
         return flag;
     }
 
@@ -69,15 +65,22 @@ public class CustomerDaoImpl extends BaseDao<Customer> implements CustomerDao{
     public Customer findCustomerById(int id) {
         String sql = "select * from customer where id = ?";
         Customer customer = getInstance(conn,sql,id);
-        JDBCUtils.releaseAll(conn,null);
+//        JDBCUtils.releaseAll(conn,null);
         return customer;
     }
 
     @Override
-    public int getCount() {
+    public int getCustomersCount() {
         String sql = "select count(*) from customer";
         int count = getValue(conn,sql);
-        JDBCUtils.releaseAll(conn,null);
+//        JDBCUtils.releaseAll(conn,null);
         return count;
+    }
+
+    @Override
+    public boolean changeCustomerPwd(String password,int id) {
+        String sql = "update customer set password = ? where id = ?";
+        boolean flag = update(conn,sql,password,id) > 0;
+        return flag;
     }
 }

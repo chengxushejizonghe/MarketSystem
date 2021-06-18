@@ -40,4 +40,12 @@ public class CustomerServiceImpl implements CustomerService {
     public boolean updateCustomer(Customer customer) {
         return customerDao.updateCustomer(customer);
     }
+
+    @Override
+    public boolean changeCustomerPwd(String password,int id){
+        return customerDao.changeCustomerPwd(password,id);
+    }
+
+
+
 }

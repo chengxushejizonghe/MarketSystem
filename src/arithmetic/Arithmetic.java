@@ -3,7 +3,7 @@ package arithmetic;
 /**
  * @author 林敬舒
  * @create 2021-06-16-20:18
- * 算法类，例如查找和排序算法
+ * 算法类，例如排序算法
  */
 public class Arithmetic {
 

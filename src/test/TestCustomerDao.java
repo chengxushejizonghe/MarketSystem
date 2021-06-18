@@ -1,13 +1,12 @@
 package test;
 
-import java.sql.SQLException;
-import java.util.List;
-
+import dao.CustomerDao;
 import dao.CustomerDaoImpl;
+import entry.Customer;
 import org.junit.Test;
 
-import dao.CustomerDao;
-import entry.Customer;
+import java.sql.SQLException;
+import java.util.List;
 
 /**
  * 测试CustomerDao
@@ -44,9 +43,16 @@ public class TestCustomerDao {
 
     @Test
     public void testUpdateCustomer(){
-        Customer customer = new Customer();
-        customer.setPassword("33589");
         CustomerDao customerDao = new CustomerDaoImpl();
+        Customer customer = new Customer();
+        //与dao层相对应
+        customer.setId(3);
+        customer.setUsername("wu");
+        customer.setPassword("321654");
+        customer.setRealName("无");
+        customer.setContactPhone("5465168");
+        customer.setEmail("a6s54c@a3s5c4.com");
+        customer.setLevel(1);
         customerDao.updateCustomer(customer);
     }
 

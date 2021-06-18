@@ -17,6 +17,11 @@ public interface CustomerDao {
      * @return
      */
     public boolean insertCustomer(Customer customer);
+
+    /**
+     * 查询所有用户
+     * @return
+     */
     public List<Customer> findCustomers();
 
     /**
@@ -44,5 +49,7 @@ public interface CustomerDao {
      * 返回数据的条目数
      * @return
      */
-    public int getCount();
+    public int getCustomersCount();
+
+    public boolean changeCustomerPwd(String Password,int id);
 }

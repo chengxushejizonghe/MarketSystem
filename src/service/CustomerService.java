@@ -14,4 +14,5 @@ public interface CustomerService {
     public List<Customer> findCustomers() throws SQLException;
     public boolean deleteCustomer(int id) throws SQLException;
     public boolean updateCustomer(Customer customer) throws SQLException;
+    public boolean changeCustomerPwd(String pwd,int id);
 }
