@@ -27,6 +27,10 @@ public class Product {
 	 * 商品数量
 	 */
 	private int quantity;
+	/**
+	 * 商品销量
+	 */
+	private int salesVolume;
 
 	public String getProductName() {
 		return productName;
@@ -76,6 +80,14 @@ public class Product {
 		this.quantity = quantity;
 	}
 
+	public int getSalesVolume() {
+		return salesVolume;
+	}
+
+	public void setSalesVolume(int salesVolume) {
+		this.salesVolume = salesVolume;
+	}
+	
 	@Override
 	public String toString() {
 		return "Product{" +
@@ -85,6 +97,9 @@ public class Product {
 				", type='" + type + '\'' +
 				", productionDate=" + productionDate +
 				", quantity=" + quantity +
+				", salesVolume=" + salesVolume +
 				'}';
 	}
+
+	
 }
