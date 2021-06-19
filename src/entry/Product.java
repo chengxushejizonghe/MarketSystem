@@ -87,7 +87,7 @@ public class Product {
 	public void setSalesVolume(int salesVolume) {
 		this.salesVolume = salesVolume;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Product{" +
@@ -100,6 +100,4 @@ public class Product {
 				", salesVolume=" + salesVolume +
 				'}';
 	}
-
-	
 }

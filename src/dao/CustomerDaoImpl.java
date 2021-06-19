@@ -12,8 +12,7 @@ import java.util.List;
  */
 public class CustomerDaoImpl extends BaseDao<Customer> implements CustomerDao{
 
-
-    public Connection conn = JDBCUtils.getConnection();
+    public static Connection conn = JDBCUtils.getConnection();
     /**
      * 向Customer表插入数据
      * @param customer 从service层值传递获得
@@ -82,5 +81,11 @@ public class CustomerDaoImpl extends BaseDao<Customer> implements CustomerDao{
         String sql = "update customer set password = ? where id = ?";
         boolean flag = update(conn,sql,password,id) > 0;
         return flag;
+    }
+
+    @Override
+    public Customer findCustomerByLogin(String username, String password) {
+        String sql = "select * from customer where username = ? and password = ?";
+        return getInstance(conn,sql,username,password);
     }
 }
