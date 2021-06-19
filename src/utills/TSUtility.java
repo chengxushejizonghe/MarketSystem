@@ -25,7 +25,7 @@ public class TSUtility {
             String str = readKeyBoard(1, false);
             c = str.charAt(0);
             //判断字符是否为数字(by linjingshu)
-            if (Character.isDigit(c)) {
+            if (!Character.isDigit(c)) {
                 System.out.print("选择错误，请重新输入：");
             } else {
                 break;
