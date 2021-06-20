@@ -1,6 +1,6 @@
 package entry;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Product {
 	/**
@@ -22,11 +22,15 @@ public class Product {
 	/**
 	 * 生产日期
 	 */
-	private Date productionDate;
+	private LocalDateTime productionDate;
 	/**
 	 * 商品数量
 	 */
 	private int quantity;
+	/**
+	 * 商品销量
+	 */
+	private int salesVolume;
 
 	public String getProductName() {
 		return productName;
@@ -60,11 +64,11 @@ public class Product {
 		this.type = type;
 	}
 
-	public Date getProductionDate() {
+	public LocalDateTime getProductionDate() {
 		return productionDate;
 	}
 
-	public void setProductionDate(Date productionDate) {
+	public void setProductionDate(LocalDateTime productionDate) {
 		this.productionDate = productionDate;
 	}
 
@@ -76,6 +80,14 @@ public class Product {
 		this.quantity = quantity;
 	}
 
+	public int getSalesVolume() {
+		return salesVolume;
+	}
+
+	public void setSalesVolume(int salesVolume) {
+		this.salesVolume = salesVolume;
+	}
+
 	@Override
 	public String toString() {
 		return "Product{" +
@@ -85,6 +97,7 @@ public class Product {
 				", type='" + type + '\'' +
 				", productionDate=" + productionDate +
 				", quantity=" + quantity +
+				", salesVolume=" + salesVolume +
 				'}';
 	}
 }

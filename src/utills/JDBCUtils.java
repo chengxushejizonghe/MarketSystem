@@ -52,7 +52,6 @@ public class JDBCUtils {
                 e.printStackTrace();
             }
         }
-
         if (ps != null) {
             try {
                 ps.close();
@@ -60,7 +59,6 @@ public class JDBCUtils {
                 e.printStackTrace();
             }
         }
-
         if (rs != null) {
             try {
                 rs.close();

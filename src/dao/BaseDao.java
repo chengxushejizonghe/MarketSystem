@@ -23,10 +23,9 @@ public abstract class BaseDao<T> {
      private Class<T> clazz = null;
 
 //	public BaseDAO(){
-//
 //	}
      {
-          //获取当前BaseDAO的子类继承的父类中的泛型
+          //获取当前BaseDao的子类继承的父类中的泛型
           Type genericSuperclass = this.getClass().getGenericSuperclass();
           ParameterizedType paramType = (ParameterizedType) genericSuperclass;
 
@@ -52,10 +51,8 @@ public abstract class BaseDao<T> {
           } finally {
                // 4.资源的关闭
                JDBCUtils.releaseAll(null, ps);
-
           }
           return 0;
-
      }
 
      // 通用的查询操作，用于返回数据表中的一条记录（version 2.0：考虑上事务）
@@ -63,12 +60,10 @@ public abstract class BaseDao<T> {
           PreparedStatement ps = null;
           ResultSet rs = null;
           try {
-
                ps = conn.prepareStatement(sql);
                for (int i = 0; i < args.length; i++) {
                     ps.setObject(i + 1, args[i]);
                }
-
                rs = ps.executeQuery();
                // 获取结果集的元数据 :ResultSetMetaData
                ResultSetMetaData rsmd = rs.getMetaData();
@@ -133,15 +128,12 @@ public abstract class BaseDao<T> {
                     }
                     list.add(t);
                }
-
                return list;
           } catch (Exception e) {
                e.printStackTrace();
           } finally {
                JDBCUtils.releaseAll(null, ps, rs);
-
           }
-
           return null;
      }
      //用于查询特殊值的通用的方法
@@ -152,9 +144,7 @@ public abstract class BaseDao<T> {
                ps = conn.prepareStatement(sql);
                for(int i = 0;i < args.length;i++){
                     ps.setObject(i + 1, args[i]);
-
                }
-
                rs = ps.executeQuery();
                if(rs.next()){
                     return (E) rs.getObject(1);
@@ -163,9 +153,7 @@ public abstract class BaseDao<T> {
                e.printStackTrace();
           }finally{
                JDBCUtils.releaseAll(null, ps, rs);
-
           }
           return null;
-
      }
 }

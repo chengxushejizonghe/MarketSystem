@@ -46,6 +46,10 @@ public class CustomerServiceImpl implements CustomerService {
         return customerDao.changeCustomerPwd(password,id);
     }
 
+    @Override
+    public Customer findCustomerByLogin(String username,String password) {
+        return customerDao.findCustomerByLogin(username,password);
+    }
 
 
 }
