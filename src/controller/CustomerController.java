@@ -25,6 +25,19 @@ public class CustomerController {
         }
         return false;
     }
-    //删除用户
+    /**
+     *删除用户
+     */
+    public boolean deleteCustomer(String username) throws SQLException {
+        Customer customer = customerService.findCustomerByName(username);
+        if (customer!=null){//用户存在，执行删除
+            boolean isDelete = customerService.deleteCustomer(customer.getId());
+            System.out.println("删除成功");
+            return isDelete;
+        }else {
+            System.out.println("用户不存在！");
+            return false;
+        }
+    }
     //修改用户
 }
