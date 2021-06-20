@@ -1,5 +1,11 @@
 package ui;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Scanner;
+
 import controller.CustomerController;
 import controller.LoginController;
 import utills.ViewUtility;
@@ -34,6 +40,7 @@ public class UI {
                     break;
                 case '3':
                     System.out.println("转到用户注册界面");
+                    customerSignup();
                 case '4':
                     System.out.println("确认是否退出(Y/N)：");
                     char yn = ViewUtility.readConfirmSelection();
@@ -55,15 +62,21 @@ public class UI {
         String username = ViewUtility.readString();
         System.out.println("请输入密码");
         String password = ViewUtility.readString();
-        //调用控制层方法传入参数
-        boolean flag = loginController.customerLogin(username,password);
-        //进入用户操作视图
-        if (flag){
+        customerLogin(username, password);//调用控制层方法传入参数
+        loginController.customerLogin(username,password);
+        if (username!=null&&username.length()>0) {
+			System.out.println("登录成功！");
+			System.out.println();
             customerIndex(username);
+		} else {
+			System.out.println("登录失败！");
         }
-    }
+    }        //进入用户操作视图
 
-    /**
+    private void customerLogin(String username, String password) {
+	}
+
+	/**
      * 管理员登录界面
      */
     public void adminLoginInterface(){
@@ -75,9 +88,14 @@ public class UI {
         String username = ViewUtility.readString();
         System.out.println("密码:");
         String password = ViewUtility.readString();
-        //调用控制层方法传入参数
-        //进入管理员操作界面
-    }
+        if(adminType!= "I") {
+        	customerLogin(username, password);
+			UsersManagerIndex(username);
+        	} else {
+            	customerLogin(username, password);
+    			InventoryManagerIndex(username);
+        	}
+        }
 
     /**
      * 用户首页
@@ -101,8 +119,38 @@ public class UI {
      * 用户注册界面
      */
     public void customerSignup(){
-        System.out.println("------------------校园超市管理信息系统------------------");
+        	System.out.println("------------------校园超市管理信息系统------------------");
+            System.out.println("请输入用户名：");
+            String username = new Scanner(System.in).nextLine();
+            System.out.println("请输入密码：");
+            String password = new Scanner(System.in).nextLine();
+			try {
+				register(username,password);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
     }
+
+    private static void register(String username, String password)throws Exception {
+    		try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/market?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true", "root", "1234");
+            String sql = "select * from customer where username = ? and password = ?";
+            PreparedStatement p = conn.prepareStatement(sql);
+            p.setString(1, username);
+            p.setString(2, password);
+            ResultSet set = p.executeQuery();
+            System.out.println(sql);
+            if(set.next()) {
+                System.out.println("登录成功");
+            }else {
+                System.out.println("登录失败");
+            }
+    	} catch (Exception e) {
+    		System.out.println("用户名已存在");
+    		 }
+    }
+    
 
     /**
      * 用户管理员首页
