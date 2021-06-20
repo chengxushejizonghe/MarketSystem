@@ -55,5 +55,7 @@ public interface CustomerDao {
 
     public Customer findCustomerByLogin(String username,String password);
 
+    public Customer findCustomerByName(String name);
+
     public Connection getConnection();
 }

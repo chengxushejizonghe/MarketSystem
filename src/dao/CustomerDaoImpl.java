@@ -89,6 +89,12 @@ public class CustomerDaoImpl extends BaseDao<Customer> implements CustomerDao{
     }
 
     @Override
+    public Customer findCustomerByName(String name) {
+        String sql = "select * from customer where username = ?";
+        return getInstance(conn,sql,name);
+    }
+
+    @Override
     public Connection getConnection() {
         return conn;
     }

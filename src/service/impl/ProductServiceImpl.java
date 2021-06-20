@@ -48,7 +48,6 @@ public class ProductServiceImpl implements ProductService {
 
     /**
      * 补充库存
-     *
      * @param id    商品编号
      * @param count 数量
      * @return

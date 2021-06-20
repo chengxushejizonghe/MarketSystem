@@ -45,6 +45,16 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Customer findCustomerById(int id) {
+        return customerDao.findCustomerById(id);
+    }
+
+    @Override
+    public Customer findCustomerByName(String name) {
+        return customerDao.findCustomerByName(name);
+    }
+
+    @Override
     public Customer findCustomerByLogin(String username,String password) {
         return customerDao.findCustomerByLogin(username,password);
     }
