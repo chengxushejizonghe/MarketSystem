@@ -1,10 +1,9 @@
 package test;
 
 import dao.CustomerDao;
+import dao.CustomerDaoImpl;
 import entry.Customer;
 import org.junit.Test;
-import service.CustomerService;
-import service.impl.CustomerServiceImpl;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -17,7 +16,7 @@ import java.util.List;
 public class TestCustomerDao {
     @Test
     public void testFindCustomer() throws SQLException {
-        CustomerDao customerDao= new CustomerDao();
+        CustomerDao customerDao= new CustomerDaoImpl();
         List<Customer> customerList = customerDao.findCustomers();
         System.out.println(customerList);
     }
@@ -25,12 +24,42 @@ public class TestCustomerDao {
     @Test
     public void testInsertCustomer() throws SQLException {
         Customer customer = new Customer();
-        customer.setUsername("yyds");
-        customer.setPassword("123456");
-        customer.setBalance(150);
-        customer.setContactPhone("13823831820");
-        customer.setEmail("sa654cs@gmail.com");
-        CustomerDao customerDao = new CustomerDao();
-        customerDao.insertCustomer(customer);
+        customer.setUsername("我是你爸");
+        customer.setPassword("54321");
+        customer.setBalance(100);
+        customer.setRealName("Jerry Bob");
+        customer.setContactPhone("13823878923");
+        customer.setEmail("acs546@gmail.com");
+        CustomerDao customerDao = new CustomerDaoImpl();
+        System.out.println(customerDao.insertCustomer(customer));
+    }
+
+    @Test
+    public void testDeleteCustomer() throws SQLException {
+        int id = 2;
+        CustomerDao customerDao = new CustomerDaoImpl();
+        System.out.println(customerDao.deleteCustomer(id));
+    }
+
+    @Test
+    public void testUpdateCustomer(){
+        CustomerDao customerDao = new CustomerDaoImpl();
+        Customer customer = new Customer();
+        //与dao层相对应
+        customer.setId(3);
+        customer.setUsername("wu");
+        customer.setPassword("321654");
+        customer.setRealName("无");
+        customer.setContactPhone("5465168");
+        customer.setEmail("a6s54c@a3s5c4.com");
+        customer.setLevel(1);
+        customerDao.updateCustomer(customer);
+    }
+
+    @Test
+    public void testFindCustomerById(){
+        CustomerDao customerDao = new CustomerDaoImpl();
+        Customer customer = customerDao.findCustomerById(4);
+        System.out.println(customer);
     }
 }

@@ -22,11 +22,11 @@ public class JDBCUtils {
     static {
         try {
             Properties properties = new Properties();
-            FileInputStream is = new FileInputStream("config/db.properties");
+            FileInputStream is = new FileInputStream(("config/db.properties"));
             properties.load(is);
             source = BasicDataSourceFactory.createDataSource(properties);
         } catch (Exception e) {
-            throw new ExceptionInInitializerError("DBCP初始化异常，请检查配置文件！！！");
+            e.printStackTrace();
         }
     }
     /**
@@ -43,9 +43,6 @@ public class JDBCUtils {
 
     /**
      * 关闭所有资源连接
-     * @param conn
-     * @param ps
-     * @param rs
      */
     public static void releaseAll(Connection conn, Statement ps, ResultSet rs) {
         if (conn != null) {

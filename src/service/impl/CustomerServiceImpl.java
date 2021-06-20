@@ -1,10 +1,10 @@
 package service.impl;
 
 import dao.CustomerDao;
+import dao.CustomerDaoImpl;
 import entry.Customer;
 import service.CustomerService;
 
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -13,20 +13,39 @@ import java.util.List;
  */
 
 public class CustomerServiceImpl implements CustomerService {
-    private final CustomerDao customerDao;
+    private static CustomerDao customerDao;
 
     public CustomerServiceImpl() {
-        customerDao = new CustomerDao();
+        customerDao = new CustomerDaoImpl();
     }
 
 
     @Override
-    public void insertCustomer(Customer customer) throws SQLException {
-        customerDao.insertCustomer(customer);
+    public boolean insertCustomer(Customer customer) {
+        return customerDao.insertCustomer(customer);
+
     }
 
     @Override
-    public List<Customer> findCustomers() throws SQLException {
+    public List<Customer> findCustomers() {
         return customerDao.findCustomers();
     }
+
+    @Override
+    public boolean deleteCustomer(int id) {
+        return customerDao.deleteCustomer(id);
+    }
+
+    @Override
+    public boolean updateCustomer(Customer customer) {
+        return customerDao.updateCustomer(customer);
+    }
+
+    @Override
+    public boolean changeCustomerPwd(String password,int id){
+        return customerDao.changeCustomerPwd(password,id);
+    }
+
+
+
 }
