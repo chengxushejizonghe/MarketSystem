@@ -32,9 +32,8 @@ public class CustomerDaoImpl extends BaseDao<Customer> implements CustomerDao{
      */
     public List<Customer> findCustomers() {
         String sql = "select * from customer";
-        List<Customer> customerList = getForList(conn,sql);
-//        JDBCUtils.releaseAll(conn,null);
-        return customerList;
+        //        JDBCUtils.releaseAll(conn,null);
+        return getForList(conn,sql);
     }
 
     /**

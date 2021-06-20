@@ -1,6 +1,6 @@
 package entry;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Product {
 	/**
@@ -22,7 +22,7 @@ public class Product {
 	/**
 	 * 生产日期
 	 */
-	private Date productionDate;
+	private LocalDateTime productionDate;
 	/**
 	 * 商品数量
 	 */
@@ -64,11 +64,11 @@ public class Product {
 		this.type = type;
 	}
 
-	public Date getProductionDate() {
+	public LocalDateTime getProductionDate() {
 		return productionDate;
 	}
 
-	public void setProductionDate(Date productionDate) {
+	public void setProductionDate(LocalDateTime productionDate) {
 		this.productionDate = productionDate;
 	}
 

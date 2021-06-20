@@ -62,4 +62,26 @@ public class TestCustomerDao {
         Customer customer = customerDao.findCustomerById(4);
         System.out.println(customer);
     }
+
+    @Test
+    public void testChangeCustomerPwd(){
+        int id = 4;
+        CustomerDao customerDao = new CustomerDaoImpl();
+        String changePassword = "3356";
+        System.out.println(customerDao.changeCustomerPwd(changePassword,id));
+    }
+
+    @Test
+    public void testCustomerLogin(){
+        String username = "lbwnb";
+        String password = "123456";
+        CustomerDao customerDao = new CustomerDaoImpl();
+        Customer customer = customerDao.findCustomerByLogin(username,password);
+        if (customer != null){
+            System.out.println("登录成功");
+            System.out.println(customer);
+        }else {
+            System.out.println("登录失败");
+        }
+    }
 }

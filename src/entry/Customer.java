@@ -100,8 +100,8 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer{" +
-				"username='" + username + '\'' +
-				", id=" + id +
+				"id='" + id + '\'' +
+				", username=" + username +
 				", balance=" + balance +
 				", password='" + password + '\'' +
 				", realName='" + realName + '\'' +

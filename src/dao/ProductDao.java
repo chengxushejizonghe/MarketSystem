@@ -2,6 +2,7 @@ package dao;
 
 import entry.Product;
 
+import java.sql.Connection;
 import java.util.List;
 
 /**
@@ -29,5 +30,6 @@ public interface ProductDao {
      * @return
      */
     public boolean increaseProductCount(int id,int count);
+    public Connection getConnection();
 
 }
