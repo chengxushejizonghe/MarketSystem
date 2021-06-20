@@ -21,4 +21,12 @@ public class TestCustomerService {
         List<Customer> customerList = customerService.findCustomers();
         System.out.println(customerList);
     }
+
+    @Test
+    public void testCustomerLogin(){
+        CustomerService customerService = new CustomerServiceImpl();
+        Customer customer = customerService.findCustomerByLogin("lbwnb","123456");
+        System.out.println("登录成功");
+        System.out.println(customer);
+    }
 }

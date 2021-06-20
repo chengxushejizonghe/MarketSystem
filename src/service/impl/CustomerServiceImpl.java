@@ -13,11 +13,9 @@ import java.util.List;
  */
 
 public class CustomerServiceImpl implements CustomerService {
-    private static CustomerDao customerDao;
+    CustomerDao customerDao = new CustomerDaoImpl();
 
-    public CustomerServiceImpl() {
-        customerDao = new CustomerDaoImpl();
-    }
+
 
 
     @Override

@@ -28,4 +28,12 @@ public class LoginController {
         }
         return isToPrivate;
     }
+
+    public boolean adminLogin(char type,String username,String password){
+        //用户管理员
+        if (type == 'U'){
+
+        }
+        return true;
+    }
 }
