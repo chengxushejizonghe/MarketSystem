@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @date 2019年2月12日上午12:02:58
  *
  */
-public class TSUtility {
+public class ViewUtility {
     private static Scanner scanner = new Scanner(System.in);
     /**
      * 

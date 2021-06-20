@@ -2,7 +2,7 @@ package ui;
 
 import controller.CustomerController;
 import controller.LoginController;
-import utills.TSUtility;
+import utills.ViewUtility;
 
 public class UI {
     private final LoginController loginController = new LoginController();
@@ -21,7 +21,7 @@ public class UI {
             System.out.println("---------------------3-用户注册---------------------");
             System.out.println("---------------------4-退出系统---------------------");
             System.out.println("请选择(1-4)：");
-            key = TSUtility.readMenuSelection();
+            key = ViewUtility.readMenuSelection();
             System.out.println();
             switch (key){
                 case '1':
@@ -36,7 +36,7 @@ public class UI {
                     System.out.println("转到用户注册界面");
                 case '4':
                     System.out.println("确认是否退出(Y/N)：");
-                    char yn = TSUtility.readConfirmSelection();
+                    char yn = ViewUtility.readConfirmSelection();
                     if (yn == 'Y'){
                         loopFlag = false;
                     }
@@ -52,9 +52,9 @@ public class UI {
         System.out.println("------------------校园超市管理信息系统------------------");
         System.out.println("---------------------用户登录界面---------------------");
         System.out.println("请输入用户名");
-        String username = TSUtility.readString();
+        String username = ViewUtility.readString();
         System.out.println("请输入密码");
-        String password = TSUtility.readString();
+        String password = ViewUtility.readString();
         //调用控制层方法传入参数
         boolean flag = loginController.customerLogin(username,password);
         //进入用户操作视图
@@ -70,11 +70,11 @@ public class UI {
         System.out.println("------------------校园超市管理信息系统------------------");
         System.out.println("---------------------管理员登录界面---------------------");
         System.out.println("管理员类型：用户管理员(U)||库存管理员(I)");
-        String adminType = TSUtility.readString();
+        String adminType = ViewUtility.readString();
         System.out.println("用户名：");
-        String username = TSUtility.readString();
+        String username = ViewUtility.readString();
         System.out.println("密码:");
-        String password = TSUtility.readString();
+        String password = ViewUtility.readString();
         //调用控制层方法传入参数
         //进入管理员操作界面
     }
@@ -93,7 +93,7 @@ public class UI {
         System.out.println("6.注销");
         System.out.println("7.退出登录");
         System.out.println("请选择(1-7)：");
-        char key = TSUtility.readMenuSelection();
+        char key = ViewUtility.readMenuSelection();
         System.out.println();
     }
 
@@ -122,7 +122,7 @@ public class UI {
             System.out.println("6.修改管理员密码");
             System.out.println("7.退出登录");
             System.out.println("请选择(1-7)：");
-            key = TSUtility.readMenuSelection();
+            key = ViewUtility.readMenuSelection();
             switch (key){
                 case '1':
                 case '2':
@@ -132,7 +132,7 @@ public class UI {
                 case '6':
                 case '7':
                     System.out.println("确认是否退出(Y/N)：");
-                    char yn = TSUtility.readConfirmSelection();
+                    char yn = ViewUtility.readConfirmSelection();
                     if (yn == 'Y'){
                         loopFlag = false;
                     }

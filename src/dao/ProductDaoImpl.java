@@ -61,15 +61,15 @@ public class ProductDaoImpl extends BaseDao<Product> implements ProductDao{
     }
 
     /**
-     * 补充库存
-     *
+     * 补充商品库存
      * @param id    商品编号
-     * @param count 数量
+     * @param count 添加的数量
      * @return
      */
     @Override
     public boolean increaseProductCount(int id, int count) {
-        return false;
+        String sql = "update product set quantity = quantity + ? where id = ?";
+        return update(connection,sql,count,id) > 0;
     }
 
     @Override

@@ -35,4 +35,12 @@ public class TestProductDao {
         System.out.println(productDao.findProducts());
         JDBCUtils.releaseAll(productDao.getConnection(),null,null);
     }
+
+    @Test
+    public void testIncreaseProductCount(){
+        ProductDao productDao = new ProductDaoImpl();
+        productDao.increaseProductCount(1,15);
+        JDBCUtils.releaseAll(JDBCUtils.getConnection(),null,null);
+        System.out.println("修改成功");
+    }
 }

@@ -4,6 +4,7 @@ import dao.CustomerDao;
 import dao.CustomerDaoImpl;
 import entry.Customer;
 import org.junit.Test;
+import utills.JDBCUtils;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -19,6 +20,7 @@ public class TestCustomerDao {
         CustomerDao customerDao= new CustomerDaoImpl();
         List<Customer> customerList = customerDao.findCustomers();
         System.out.println(customerList);
+        JDBCUtils.releaseAll(customerDao.getConnection(),null,null);
     }
 
     @Test
