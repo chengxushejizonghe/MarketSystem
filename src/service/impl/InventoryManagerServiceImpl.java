@@ -14,7 +14,7 @@ public class InventoryManagerServiceImpl implements InventoryManagerService {
     InventoryManagerDao inventoryManagerDao = new InventoryManagerDaoImpl();
 
     @Override
-    public InventoryManager loginInventoryManagerByLogin(String username, String password) {
+    public InventoryManager findInventoryManagerByLogin(String username, String password) {
         return inventoryManagerDao.findInventoryManagerByLogin(username,password);
     }
 
