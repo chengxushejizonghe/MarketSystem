@@ -66,10 +66,11 @@ public class TestCustomerDao {
 
     @Test
     public void testChangeCustomerPwd(){
-        int id = 4;
+        String username = "lbwnb";
+        String oldPassword = "123456";
+        String newPassword = "321654";
         CustomerDao customerDao = new CustomerDaoImpl();
-        String changePassword = "3356";
-//        System.out.println(customerDao.changeCustomerPwd(changePassword,id));
+        System.out.println(customerDao.changeCustomerPwd(username,oldPassword,newPassword));
     }
 
     @Test
