@@ -8,5 +8,5 @@ import entry.UsersManager;
  */
 public interface UsersManagerDao {
     public UsersManager findUsersManagerByLogin(String username,String password);
-    public boolean changeUserManagerPwd(String password,int id);
+    public boolean changeUserManagerPwd(String username,String oldPassword,String newPassword);
 }

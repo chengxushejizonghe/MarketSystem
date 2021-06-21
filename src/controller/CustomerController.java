@@ -39,5 +39,22 @@ public class CustomerController {
             return false;
         }
     }
+
+    /**
+     * 修改用户密码
+     * @param username 用户名
+     * @param oldPassword 旧密码
+     * @param newPassword 新密码
+     * @return
+     */
+    public boolean changeCustomerPwd(String username,String oldPassword,String newPassword){
+        if (customerService.changeCustomerPwd(username, oldPassword, newPassword)){
+            System.out.println("旧密码已改，请记住新密码！");
+            return true;
+        }else {
+            System.out.println("旧密码、账号不匹配！");
+            return false;
+        }
+    }
     //修改用户
 }

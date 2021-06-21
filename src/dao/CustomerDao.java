@@ -51,7 +51,7 @@ public interface CustomerDao {
      */
     public int getCustomersCount();
 
-    public boolean changeCustomerPwd(String password,int id);
+    public boolean changeCustomerPwd(String username,String oldPassword,String newPassword);
 
     public Customer findCustomerByLogin(String username,String password);
 

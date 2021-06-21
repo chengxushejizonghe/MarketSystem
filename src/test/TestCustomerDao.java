@@ -69,7 +69,7 @@ public class TestCustomerDao {
         int id = 4;
         CustomerDao customerDao = new CustomerDaoImpl();
         String changePassword = "3356";
-        System.out.println(customerDao.changeCustomerPwd(changePassword,id));
+//        System.out.println(customerDao.changeCustomerPwd(changePassword,id));
     }
 
     @Test

@@ -20,8 +20,8 @@ public class InventoryManagerDaoImpl extends BaseDao<InventoryManager> implement
     }
 
     @Override
-    public boolean changeInventoryManagerPwd(String password, int id) {
-        String sql = "select * from InventoryManager set password = ? where id = ?";
-        return update(connection,sql,password,id)>0;
+    public boolean changeInventoryManagerPwd(String username, String oldPassword,String newPassword) {
+        String sql = "select * from InventoryManager set password = ? where username = ? and password = ?";
+        return update(connection,sql,newPassword,username,oldPassword)>0;
     }
 }

@@ -76,9 +76,9 @@ public class CustomerDaoImpl extends BaseDao<Customer> implements CustomerDao{
     }
 
     @Override
-    public boolean changeCustomerPwd(String password,int id) {
-        String sql = "update customer set password = ? where id = ?";
-        boolean flag = update(conn,sql,password,id) > 0;
+    public boolean changeCustomerPwd(String username,String oldPassword,String newPassword) {
+        String sql = "update customer set password = ? where username = ? and password = ?";
+        boolean flag = update(conn,sql,newPassword,username,oldPassword) > 0;
         return flag;
     }
 

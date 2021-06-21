@@ -19,7 +19,7 @@ public class InventoryManagerServiceImpl implements InventoryManagerService {
     }
 
     @Override
-    public boolean changeInventoryManagerPwd(String password, int id) {
-        return inventoryManagerDao.changeInventoryManagerPwd(password,id);
+    public boolean changeInventoryManagerPwd(String username,String oldPassword,String newPassword) {
+        return inventoryManagerDao.changeInventoryManagerPwd(username, oldPassword, newPassword);
     }
 }

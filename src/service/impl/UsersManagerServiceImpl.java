@@ -18,7 +18,7 @@ public class UsersManagerServiceImpl implements UsersMangerService {
     }
 
     @Override
-    public boolean changeUserManagerPwd(String password, int id) {
-        return usersManagerDao.changeUserManagerPwd(password,id);
+    public boolean changeUserManagerPwd(String username,String oldPassword,String newPassword) {
+        return usersManagerDao.changeUserManagerPwd(username,oldPassword,newPassword);
     }
 }

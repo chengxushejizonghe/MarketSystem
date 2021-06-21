@@ -10,6 +10,6 @@ import entry.InventoryManager;
  */
 public interface InventoryManagerService {
     public InventoryManager findInventoryManagerByLogin(String username,String password);
-    public boolean changeInventoryManagerPwd(String password,int id);
+    public boolean changeInventoryManagerPwd(String username,String oldPassword,String newPassword);
 
 }
