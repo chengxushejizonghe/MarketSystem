@@ -2,7 +2,10 @@ package arithmetic;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Collections;
+import java.util.Comparator;
 
+import entry.Customer;
 import entry.Product;
 /**
  * @author 廖郑华
@@ -13,7 +16,7 @@ public  class Arithmetic {
 
 
     //商品冒泡排序算法
-    private static List<Product> PriceSort(List<Product> products){//价格
+    private static void PriceSort(List<Product> products){//价格
   
         for (int i = 0; i < products.size() - 1; i++) {  
             for (int j = 1; j < products.size() - i; j++) {  
@@ -25,11 +28,10 @@ public  class Arithmetic {
                     products.set(j, temp);  
                 }  
             }  
-        }
+        }  
         for (Product s : products) { 
             System.out.println(s.getPrice());  
-        }
-        return products;
+        }  
     }  
     
     private static void QuantitySort(List<Product> products){//数量
@@ -87,6 +89,10 @@ public  class Arithmetic {
             System.out.println(s.getProductionDate());  
         }  
     }
+   
+    //商品二分查找算法00
+
+
 
     //用户希尔排序算法
     public class ShellSortDemo {
@@ -121,40 +127,113 @@ public  class Arithmetic {
     	}
     }
 
+    
+  //快速排序
 
-    public static int quickSelect(int[] arr, int selectIndex) {
-        int s = 0;
-        int i = s+1;
-        while(i < arr.length) {
-            if(arr[i] < arr[0]) {
-                int t = arr[s+1];
-                arr[s+1] = arr[i];
-                arr[i] = t;
-                s += 1;
-                i = s+1;
-                continue;
-            }
-            i++;
-        }
+    public static List<Customer> quickSort1(List<Customer> customers) {//用户余额
+    	 
+		Customer pivot = customers.get(0); //可替换代码
+		//int mid = arr.size()/2;
+		//int pivot = arr.get(mid);
+		List<Customer> smaller = new ArrayList<Customer>(); //放置小于基准值的数据
+		List<Customer> bigger = new ArrayList<Customer>(); //放置大于基准值的数据
+ 
+                //分解当前列表的数据
+		for(int i=1; i<customers.size();i++){ //替换i=0
+			//if(i == mid)
+			    //continue;
+			//else
+			if(pivot.getBalance() >= customers.get(0).getBalance()) 
+				smaller.add(customers.get(i));
+			else 
+				bigger.add(customers.get(i));
+		}
+        
+                //递归调用
+		if(smaller.size() > 1) 
+			quickSort1(smaller);
+		if(bigger.size() > 1) 
+			quickSort1(bigger);
+ 
+		customers.removeAll(customers);
+		customers.addAll(smaller);
+		customers.add(pivot);
+		customers.addAll(bigger);
+ 
+		return customers;
+	}
+    
+    public static List<Customer> quickSort2(List<Customer> customers) {//会员等级
+   	 
+		Customer pivot = customers.get(0); //可替换代码
+		//int mid = arr.size()/2;
+		//int pivot = arr.get(mid);
+		List<Customer> smaller = new ArrayList<Customer>(); //放置小于基准值的数据
+		List<Customer> bigger = new ArrayList<Customer>(); //放置大于基准值的数据
+ 
+                //分解当前列表的数据
+		for(int i=1; i<customers.size();i++){ //替换i=0
+			//if(i == mid)
+			    //continue;
+			//else
+			if(pivot.getLevel() >= customers.get(0).getLevel()) 
+				smaller.add(customers.get(i));
+			else 
+				bigger.add(customers.get(i));
+		}
+        
+                //递归调用
+		if(smaller.size() > 1) 
+			quickSort2(smaller);
+		if(bigger.size() > 1) 
+			quickSort2(bigger);
+ 
+		customers.removeAll(customers);
+		customers.addAll(smaller);
+		customers.add(pivot);
+		customers.addAll(bigger);
+ 
+		return customers;
+	}
 
-        // i找到最后之后将下表为s的值和第一个值交换
-        int temp = arr[0];
-        arr[0] = arr[s];
-        arr[s] = temp;
+    public static List<Customer> quickSort3(List<Customer> customers) {//注册时间
+      	 
+		Customer pivot = customers.get(0); //可替换代码
+		//int mid = arr.size()/2;
+		//int pivot = arr.get(mid);
+		List<Customer> smaller = new ArrayList<Customer>(); //放置小于基准值的数据
+		List<Customer> bigger = new ArrayList<Customer>(); //放置大于基准值的数据
+ 
+                //分解当前列表的数据
+		for(int i=1; i<customers.size();i++){ //替换i=0
+			//if(i == mid)
+			    //continue;
+			//else
+			if(customers.get(i - 1).getCreationTime().isBefore(customers.get(i).getCreationTime())) 
+				smaller.add(customers.get(i));
+			else 
+				bigger.add(customers.get(i));
+		}
+        
+                //递归调用
+		if(smaller.size() > 1) 
+			quickSort3(smaller);
+		if(bigger.size() > 1) 
+			quickSort3(bigger);
+ 
+		customers.removeAll(customers);
+		customers.addAll(smaller);
+		customers.add(pivot);
+		customers.addAll(bigger);
+ 
+		return customers;
+	}
 
-        if(selectIndex-1 == s) {
-            return arr[s];
-        }else {
-            // 将数组不需要的切掉   用后一部分去回调
-            int arrs[] = new int[arr.length - s];
-            for(int j = s; j < arr.length; j++) {
-                arrs[j-s] = arr[j];
-            }
-            quickSelect(arrs, selectIndex);
-        }
-        return 0;
-    }
-  
-}
+    
+ }
+
+
+
+
 
 
