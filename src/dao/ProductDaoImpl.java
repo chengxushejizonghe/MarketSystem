@@ -50,6 +50,12 @@ public class ProductDaoImpl extends BaseDao<Product> implements ProductDao{
                 product.getQuantity(),product.getSalesVolume(),product.getId()) > 0;
     }
 
+    @Override
+    public Product findProductByName(String productName) {
+        String sql = "select * from product where productName = ?";
+        return getInstance(connection,sql,productName);
+    }
+
     /**
      * 减少商品数量，或购买商品导致数量减少
      *

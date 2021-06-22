@@ -24,7 +24,7 @@ public class CustomerController {
      * 查找所有用户
      * @return
      */
-    public List<Customer> findCustomers() throws SQLException {
+    public List<Customer> findCustomers(){
         return customerService.findCustomers();
     }
 
@@ -57,9 +57,11 @@ public class CustomerController {
             if (customerService.insertCustomer(customer)){
                 System.out.println("新的用户添加成功");
                 return true;
+            }else {
+                System.out.println("添加用户失败");
+                return false;
             }
         }
-        return false;
     }
     /**
      *删除用户
