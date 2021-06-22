@@ -72,7 +72,7 @@ public interface CustomerDao {
      * @param change 等级变化量
      * @return
      */
-    public boolean upgradeCustomerLevel(String username,int change);
+    public boolean upgradeCustomerLevel(String username,String password,int change);
 
     public Connection getConnection();
 }

@@ -130,14 +130,30 @@ public class CustomerController {
 
     /**
      * 用户购买商品，购买商品需要确认用户名密码
-     * @param productId 要购买商品的id
+     * @param productName 要购买商品的id
      * @param count 购买数量
      * @param username 用户名
      * @param password 密码
      */
-    public boolean pay(int productId,int count,String username,String password){
-        Product product = productService.findProductById(productId);
+    public boolean pay(String productName,int count,String username,String password){
+        Product product = productService.findProductByName(productName);
         Customer customer = customerService.findCustomerByLogin(username, password);
+        int level = customer.getLevel();
+        double discount = 1;
+        switch (level){
+            case 0:
+                discount = 1;
+                break;
+            case 1:
+                discount = 0.9;
+                break;
+            case 2:
+                discount = 0.8;
+                break;
+            case 3:
+                discount = 0.75;
+                break;
+        }
         if (customer == null){
             System.out.println("用户名或密码不正确!");
             return false;
@@ -150,9 +166,44 @@ public class CustomerController {
             System.out.println("抱歉，商品库存不足!");
             return false;
         }
-        if(productService.decreaseProductCount(productId,count)&&
-        customerService.increaseOrDecreaseCustomerBalance(username,password,-(product.getPrice()))) {
+        if (customer.getBalance() - product.getPrice()*count < 0){
+            System.out.println("账户余额不足");
+            return false;
+        }
+        if(productService.decreaseProductCount(product.getId(),count)&&
+        customerService.increaseOrDecreaseCustomerBalance(username,password,-(product.getPrice()*discount))) {
             System.out.println("商品购买成功！");
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 升级会员
+     * @param username
+     * @param password
+     * @param level
+     * @return
+     */
+    public boolean upgradeLevel(String username,String password,int level){
+        Customer customer = customerService.findCustomerByLogin(username,password);
+        if (customer == null){
+            System.out.println("用户名或密码不正确");
+            return false;
+        }
+        int change = level - customer.getLevel();
+        if (change <= 0 || level > 3){
+            System.out.println("已达到该等级");
+            return false;
+        }
+        double cost = change*10;
+        if (cost > customer.getLevel()){
+            System.out.println("账户余额不足");
+            return false;
+        }
+        if (customerService.increaseOrDecreaseCustomerBalance(username,password,change)&&customerService.upgradeCustomerLevel(username,password
+        ,change)) {
+            System.out.println("用户升级成功");
             return true;
         }
         return false;

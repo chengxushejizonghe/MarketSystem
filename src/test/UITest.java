@@ -129,8 +129,11 @@ public class UITest {
                 case '1':
                     productsList();
                 case '2':
+                    buy();
                 case '3':
+                    customerDetail(username);
                 case '4':
+
                 case '5':
                 case '6':
                 case '7':
@@ -190,6 +193,20 @@ public class UITest {
         System.out.println("4.修改商品信息");
         System.out.println("5.退出");
         System.out.println("请选择(1-5)：");
+    }
+
+    public void customerDetail(String username){
+        System.out.println("------------------校园超市管理信息系统------------------");
+        System.out.println("----------------------个人信息------------------------");
+        Customer customer = customerController.findCustomerByName(username);
+        System.out.println("用户编号："+customer.getId());
+        System.out.println("用户名："+customer.getUsername());
+        System.out.println("用户余额: "+ customer.getBalance());
+        System.out.println("真实姓名：" + customer.getRealName());
+        System.out.println("注册日期：" + customer.getCreationTime());
+        System.out.println("联系电话:" + customer.getContactPhone());
+        System.out.println("邮箱:" + customer.getEmail());
+        System.out.println("用户等级" + customer.getLevel());
     }
 
     /**
@@ -282,6 +299,28 @@ public class UITest {
         if (yn == 'Y'){
             if (productController.deleteProduct(productName)){
                 System.out.println("-------------------------------------------------");
+            }
+        }
+    }
+
+    public void buy(){
+        System.out.println("------------------校园超市管理信息系统------------------");
+        System.out.println("----------------------购买商品---------------------");
+        System.out.println("请输入要购买商品的名称：");
+        String productName = ViewUtility.readString();
+        System.out.println("输入要购买商品的数量：");
+        int count = ViewUtility.readInt();
+        System.out.println("请输入用户名：");
+        String username = ViewUtility.readString();
+        System.out.println("请输入密码：");
+        String password = ViewUtility.readString();
+        System.out.println("确认购买商品(Y/N)");
+        char yn = ViewUtility.readConfirmSelection();
+        if (yn == 'Y'){
+            if (customerController.pay(productName,count,username,password)){
+                System.out.println("-------------------------------------------------");
+            }else {
+                System.out.println("商品购买成功");
             }
         }
     }
