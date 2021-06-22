@@ -1,62 +1,94 @@
 package arithmetic;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
+import entry.Product;
 /**
  * @author 林敬舒
  * @create 2021-06-16-20:18
  * 算法类，例如排序算法
  */
-public class Arithmetic {
+public  class Arithmetic {
 
     //商品冒泡排序算法
-    private static int[] bubbleSort(int[] nums) {
-        int len = nums.length;
-        if(len == 0 || len == 1) {
-            return nums;
-        }
-        for(int i = 0; i < len; i++) {
-            for(int j = 0, subLen = len - 1 - i; j < subLen; j++) {
-                if(nums[j + 1] < nums[j]) {
-                    int tmp = nums[j + 1];
-                    nums[j + 1] = nums[j];
-                    nums[j] = tmp;
-                }
-            }
-        }
-        return nums;
+    private static void PriceSort(List<Product> products){//价格
+  
+        for (int i = 0; i < products.size() - 1; i++) {  
+            for (int j = 1; j < products.size() - i; j++) {  
+            	Product temp;  
+                if (products.get(j - 1).getPrice() - products.get(j).getPrice() > 0) { // 比较两个整数的大小  
+  
+                    temp = products.get(j - 1);  
+                    products.set((j - 1), products.get(j));  
+                    products.set(j, temp);  
+                }  
+            }  
+        }  
+        for (Product s : products) { 
+            System.out.println(s.getPrice());  
+        }  
+    }  
+    
+    private static void QuantitySort(List<Product> products){//数量
+    	  
+        for (int i = 0; i < products.size() - 1; i++) {  
+            for (int j = 1; j < products.size() - i; j++) {  
+            	Product temp;  
+                if (products.get(j - 1).getQuantity() - products.get(j).getQuantity() > 0) { // 比较两个整数的大小  
+  
+                    temp = products.get(j - 1);  
+                    products.set((j - 1), products.get(j));  
+                    products.set(j, temp);  
+                }  
+            }  
+        }  
+        for (Product s : products) { 
+            System.out.println(s.getQuantity());  
+        }  
     }
 
-    //商品二分查找算法
-    public static int binarySearch(int[] arr, int x) {
-        int low = 0;
-        int high = arr.length-1;
-        while(low <= high) {
-            int middle = (low + high)/2;
-            if(x == arr[middle]) {
-                return middle;
-            }else if(x <arr[middle]) {
-                high = middle - 1;
-            }else {
-                low = middle + 1;
-            }
-        }
-        return -1;
+    
+    
+    private static void SalesVolumeSort(List<Product> products){//销量
+  	  
+        for (int i = 0; i < products.size() - 1; i++) {  
+            for (int j = 1; j < products.size() - i; j++) {  
+            	Product temp;  
+                if (products.get(j - 1).getSalesVolume() - products.get(j).getSalesVolume() > 0) { // 比较两个整数的大小  
+  
+                    temp = products.get(j - 1);  
+                    products.set((j - 1), products.get(j));  
+                    products.set(j, temp);  
+                }  
+            }  
+        }  
+        for (Product s : products) { 
+            System.out.println(s.getSalesVolume());  
+        }  
     }
-    /**
-    //递归实现二分查找
-    public static int binarySearch(int[] dataset,int data,int beginIndex,int endIndex){
-           int midIndex = (beginIndex+endIndex)/2;
-           if(data <dataset[beginIndex]||data>dataset[endIndex]||beginIndex>endIndex){
-               return -1;
-           }
-           if(data <dataset[midIndex]){
-               return binarySearch(dataset,data,beginIndex,midIndex-1);
-           }else if(data>dataset[midIndex]){
-               return binarySearch(dataset,data,midIndex+1,endIndex);
-           }else {
-               return midIndex;
-           }
-       }
-*/
+    
+    private static void LocalDateTimeSort(List<Product> products){//生产日期
+    	  
+        for (int i = 0; i < products.size() - 1; i++) {  
+            for (int j = 1; j < products.size() - i; j++) {  
+            	Product temp;  
+                if (products.get(j - 1).getProductionDate().isBefore(products.get(j).getProductionDate())) { // 比较两个整数的大小  
+  
+                    temp = products.get(j - 1);  
+                    products.set((j - 1), products.get(j));  
+                    products.set(j, temp);  
+                }  
+            }  
+        }  
+        for (Product s : products) { 
+            System.out.println(s.getProductionDate());  
+        }  
+    }
+   
+    //商品二分查找算法
+
+
 
     //用户希尔排序算法
     public class ShellSortDemo {
