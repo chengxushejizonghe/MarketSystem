@@ -110,7 +110,7 @@ public class Arithmetic {
     
   //快速排序
 
-    /**public static List<Customer> quickSort1(List<Customer> customers) {//也是用户余额
+    /**public static List<Customer> quickSort1(List<Customer> customers) {//用户余额
     	 
 		Customer pivot = customers.get(0); //可替换代码
 		//int mid = arr.size()/2;
