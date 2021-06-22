@@ -1,7 +1,6 @@
 package dao;
 
 import utills.JDBCUtils;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -12,7 +11,6 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 
 /*
  * DAO: data(base) access object
@@ -80,7 +78,7 @@ public abstract class BaseDao<T> {
                          // String columnName = rsmd.getColumnName(i + 1);
                          String columnLabel = rsmd.getColumnLabel(i + 1);
 
-                         // 给t对象指定的columnName属性，赋值为columValue：通过反射
+                         // 给t对象指定的columnName属性，赋值为columnValue：通过反射
                          Field field = clazz.getDeclaredField(columnLabel);
                          field.setAccessible(true);
                          field.set(t, columValue);

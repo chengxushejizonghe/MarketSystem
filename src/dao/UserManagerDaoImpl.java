@@ -20,8 +20,8 @@ public class UserManagerDaoImpl extends BaseDao<UsersManager> implements UsersMa
     }
 
     @Override
-    public boolean changeUserManagerPwd(String password, int id) {
-        String sql = "select * from UserManager set password = ? where id = ?";
-        return update(connection,sql,password,id)>0;
+    public boolean changeUserManagerPwd(String username,String oldPassword,String newPassword) {
+        String sql = "select * from UserManager set password = ? where username = ? and password = ?";
+        return update(connection,sql,newPassword,username,oldPassword)>0;
     }
 }
