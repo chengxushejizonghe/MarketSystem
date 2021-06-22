@@ -39,6 +39,11 @@ public class ProductServiceImpl implements ProductService {
         return productDao.findProductByName(productName);
     }
 
+    @Override
+    public boolean deleteProduct(int id) {
+        return productDao.deleteProduct(id);
+    }
+
     /**
      * 减少商品数量，或购买商品导致数量减少
      *

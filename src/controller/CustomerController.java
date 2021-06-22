@@ -63,6 +63,7 @@ public class CustomerController {
             }
         }
     }
+
     /**
      *删除用户
      */
@@ -70,7 +71,11 @@ public class CustomerController {
         Customer customer = customerService.findCustomerByName(username);
         if (customer!=null){//用户存在，执行删除
             boolean isDelete = customerService.deleteCustomer(customer.getId());
-            System.out.println("删除成功");
+            if (isDelete) {
+                System.out.println("删除成功");
+            }else {
+                System.out.println("删除失败");
+            }
             return isDelete;
         }else {
             System.out.println("用户不存在！");
