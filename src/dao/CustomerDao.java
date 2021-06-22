@@ -68,7 +68,7 @@ public interface CustomerDao {
 
     /**
      * 提升用户等级
-     * @param name 用户名
+     * @param username 用户名
      * @param change 等级变化量
      * @return
      */

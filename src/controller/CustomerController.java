@@ -62,5 +62,11 @@ public class CustomerController {
             return false;
         }
     }
-    //修改用户
+    /**
+     * 修改用户信息
+     */
+    public boolean updateCustomer(Customer customer) throws SQLException {
+        return customerService.updateCustomer(customer);
+        //set username = ?,password = ?,realName = ?,contactPhone = ?,email = ?,level = ? where id = ?
+    }
 }
