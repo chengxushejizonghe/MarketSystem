@@ -74,6 +74,5 @@ public class CustomerController {
             System.out.println("修改用户信息失败!");
             return false;
         }
-        //set username = ?,password = ?,realName = ?,contactPhone = ?,email = ?,level = ? where id = ?
     }
 }
