@@ -20,9 +20,29 @@ public class CustomerController {
         this.productService = new ProductServiceImpl();
     }
 
+    /**
+     * 查找所有用户
+     * @return
+     */
     public List<Customer> findCustomers() throws SQLException {
         return customerService.findCustomers();
     }
+
+    /**
+     * 根据用户名查找用户
+     * @param username
+     * @return
+     */
+    public Customer findCustomerByName(String username){
+        Customer customer = customerService.findCustomerByName(username);
+        if (customer != null){
+            return customer;
+        }else {
+            System.out.println("查找不到该用户！");
+            return null;
+        }
+    }
+
 
     /**
      * 可用于用户注册和管理员添加用户
