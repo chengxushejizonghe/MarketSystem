@@ -150,6 +150,10 @@ public class CustomerController {
             System.out.println("抱歉，商品库存不足!");
             return false;
         }
+        if (customer.getBalance() - product.getPrice()*count < 0){
+            System.out.println("账户余额不足");
+            return false;
+        }
         if(productService.decreaseProductCount(productId,count)&&
         customerService.increaseOrDecreaseCustomerBalance(username,password,-(product.getPrice()))) {
             System.out.println("商品购买成功！");

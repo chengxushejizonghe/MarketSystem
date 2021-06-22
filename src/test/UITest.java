@@ -286,6 +286,16 @@ public class UITest {
         }
     }
 
+    public void buy(){
+        System.out.println("------------------校园超市管理信息系统------------------");
+        System.out.println("----------------------购买商品---------------------");
+        System.out.println("请输入要购买商品的名称：");
+        String productName = ViewUtility.readString();
+        System.out.println("输入要购买商品的数量：");
+        int count = ViewUtility.readInt();
+        System.out.println("确认购买商品(Y/N)");
+    }
+
     public void usersList(){
         System.out.println("--------------------用户列表---------------------");
         List<Customer> customerList = customerController.findCustomers();
