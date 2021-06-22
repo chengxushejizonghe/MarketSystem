@@ -1,9 +1,7 @@
 package arithmetic;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Collections;
-import java.util.Comparator;
+
 
 import entry.Customer;
 import entry.Product;
@@ -12,11 +10,11 @@ import entry.Product;
  * @create 2021-06-16-20:18
  * 算法类，例如排序算法
  */
-public  class Arithmetic {
+public class Arithmetic {
 
 
     //商品冒泡排序算法
-    private static void PriceSort(List<Product> products){//价格
+    private static List<Product> PriceSort(List<Product> products){//价格
   
         for (int i = 0; i < products.size() - 1; i++) {  
             for (int j = 1; j < products.size() - i; j++) {  
@@ -29,12 +27,10 @@ public  class Arithmetic {
                 }  
             }  
         }  
-        for (Product s : products) { 
-            System.out.println(s.getPrice());  
-        }  
+        return products;
     }  
     
-    private static void QuantitySort(List<Product> products){//数量
+    private static List<Product> QuantitySort(List<Product> products){//数量
     	  
         for (int i = 0; i < products.size() - 1; i++) {  
             for (int j = 1; j < products.size() - i; j++) {  
@@ -47,14 +43,12 @@ public  class Arithmetic {
                 }  
             }  
         }  
-        for (Product s : products) { 
-            System.out.println(s.getQuantity());  
-        }  
+        return products;
     }
 
     
     
-    private static void SalesVolumeSort(List<Product> products){//销量
+    private static List<Product> SalesVolumeSort(List<Product> products){//销量
   	  
         for (int i = 0; i < products.size() - 1; i++) {  
             for (int j = 1; j < products.size() - i; j++) {  
@@ -67,12 +61,10 @@ public  class Arithmetic {
                 }  
             }  
         }  
-        for (Product s : products) { 
-            System.out.println(s.getSalesVolume());  
-        }  
+        return products;
     }
     
-    private static void LocalDateTimeSort(List<Product> products){//生产日期
+    private static List<Product> LocalDateTimeSort(List<Product> products){//生产日期
     	  
         for (int i = 0; i < products.size() - 1; i++) {  
             for (int j = 1; j < products.size() - i; j++) {  
@@ -85,12 +77,8 @@ public  class Arithmetic {
                 }  
             }  
         }  
-        for (Product s : products) { 
-            System.out.println(s.getProductionDate());  
-        }  
+        return products;
     }
-   
-    //商品二分查找算法00
 
 
 
