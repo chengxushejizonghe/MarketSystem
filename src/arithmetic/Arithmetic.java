@@ -13,7 +13,7 @@ public  class Arithmetic {
 
 
     //商品冒泡排序算法
-    private static void PriceSort(List<Product> products){//价格
+    private static List<Product> PriceSort(List<Product> products){//价格
   
         for (int i = 0; i < products.size() - 1; i++) {  
             for (int j = 1; j < products.size() - i; j++) {  
@@ -25,10 +25,11 @@ public  class Arithmetic {
                     products.set(j, temp);  
                 }  
             }  
-        }  
+        }
         for (Product s : products) { 
             System.out.println(s.getPrice());  
-        }  
+        }
+        return products;
     }  
     
     private static void QuantitySort(List<Product> products){//数量
@@ -86,10 +87,6 @@ public  class Arithmetic {
             System.out.println(s.getProductionDate());  
         }  
     }
-   
-    //商品二分查找算法
-
-
 
     //用户希尔排序算法
     public class ShellSortDemo {
@@ -123,7 +120,8 @@ public  class Arithmetic {
     		}
     	}
     }
-    //用户查找算法
+
+
     public static int quickSelect(int[] arr, int selectIndex) {
         int s = 0;
         int i = s+1;
@@ -157,7 +155,6 @@ public  class Arithmetic {
         return 0;
     }
   
- }
-
 }
+
 
