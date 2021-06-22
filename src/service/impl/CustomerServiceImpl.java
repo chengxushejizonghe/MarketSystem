@@ -59,5 +59,15 @@ public class CustomerServiceImpl implements CustomerService {
         return customerDao.findCustomerByLogin(username,password);
     }
 
+    @Override
+    public boolean increaseOrDecreaseCustomerBalance(String username, String password, double change) {
+        return customerDao.increaseOrDecreaseCustomerBalance(username, password, change);
+    }
+
+    @Override
+    public boolean upgradeCustomerLevel(String username, int change) {
+        return customerDao.upgradeCustomerLevel(username, change);
+    }
+
 
 }

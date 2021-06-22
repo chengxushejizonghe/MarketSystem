@@ -1,7 +1,11 @@
 package controller;
 
 import entry.Customer;
+import entry.Product;
 import service.CustomerService;
+import service.ProductService;
+import service.impl.CustomerServiceImpl;
+import service.impl.ProductServiceImpl;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -9,6 +13,12 @@ import java.util.List;
 public class CustomerController {
 
     public CustomerService customerService;
+    public ProductService productService;
+
+    public CustomerController() {
+        this.customerService = new CustomerServiceImpl();
+        this.productService = new ProductServiceImpl();
+    }
 
     public List<Customer> findCustomers() throws SQLException {
         return customerService.findCustomers();
@@ -74,5 +84,44 @@ public class CustomerController {
             System.out.println("修改用户信息失败!");
             return false;
         }
+    }
+
+    /**
+     * 用户余额充值
+     */
+    public boolean recharge(String username,String password,double money){
+        if (customerService.increaseOrDecreaseCustomerBalance(username, password, money)){
+            System.out.println("用户余额充值成功");
+            double balance = customerService.findCustomerByName(username).getBalance();
+            System.out.println("当前用户余额：" + balance);
+            return true;
+        }else {
+            System.out.println("充值失败！请检查用户名和密码是否正确");
+            return false;
+        }
+    }
+
+    /**
+     * 用户购买商品，购买商品需要确认用户名密码
+     * @param productId 要购买商品的id
+     * @param count 购买数量
+     * @param username 用户名
+     * @param password 密码
+     */
+    public boolean pay(int productId,int count,String username,String password){
+        Product product = productService.findProductById(productId);
+        Customer customer = customerService.findCustomerByLogin(username, password);
+        if (customer == null){
+            System.out.println("用户名或密码不正确!");
+            return false;
+        }
+        if (product == null){
+            System.out.println("该商品不存在");
+            return false;
+        }
+        productService.decreaseProductCount(productId,count);
+        customerService.increaseOrDecreaseCustomerBalance(username,password,-(product.getPrice()));
+        System.out.println("商品购买成功！");
+        return true;
     }
 }
