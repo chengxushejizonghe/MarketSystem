@@ -119,9 +119,15 @@ public class CustomerController {
             System.out.println("该商品不存在");
             return false;
         }
-        productService.decreaseProductCount(productId,count);
-        customerService.increaseOrDecreaseCustomerBalance(username,password,-(product.getPrice()));
-        System.out.println("商品购买成功！");
-        return true;
+        if (product.getQuantity() - count < 0){
+            System.out.println("抱歉，商品库存不足!");
+            return false;
+        }
+        if(productService.decreaseProductCount(productId,count)&&
+        customerService.increaseOrDecreaseCustomerBalance(username,password,-(product.getPrice()))) {
+            System.out.println("商品购买成功！");
+            return true;
+        }
+        return false;
     }
 }
