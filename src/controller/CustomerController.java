@@ -4,10 +4,16 @@ import entry.Customer;
 import service.CustomerService;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class CustomerController {
 
     public CustomerService customerService;
+
+    public List<Customer> findCustomers() throws SQLException {
+        return customerService.findCustomers();
+    }
+
     /**
      * 可用于用户注册和管理员添加用户
      * @param customer 传入的customer参数至少包含username,password,realName,contactPhone,email属性,不要传creationTime

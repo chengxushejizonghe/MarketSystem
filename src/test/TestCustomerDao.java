@@ -86,4 +86,13 @@ public class TestCustomerDao {
             System.out.println("登录失败");
         }
     }
+
+    @Test
+    public void testCustomerChangeBalance(){
+        String username = "lbwnb";
+        String password = "321654";
+        CustomerDao customerDao = new CustomerDaoImpl();
+        double chongzhi = 50.23;
+        System.out.println(customerDao.increaseOrDecreaseCustomerBalance(username,password,chongzhi));
+    }
 }
