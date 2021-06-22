@@ -108,6 +108,21 @@ public class ViewUtility {
         return s;
     }
 
+    public static double readDouble(){
+        String s;
+        double d;
+        for (;;) {
+            s = readKeyBoard(20, false);
+            //判断字符串是否为数字
+            try {
+                d = Double.parseDouble(s);
+                return d;
+            } catch (NumberFormatException e) {
+                System.out.println("字符串格式不正确");
+            }
+        }
+    }
+
     private static String readKeyBoard(int limit, boolean blankReturn) {
         String line = "";
         while (scanner.hasNextLine()) {

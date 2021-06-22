@@ -24,7 +24,7 @@ public class CustomerController {
      * 查找所有用户
      * @return
      */
-    public List<Customer> findCustomers() throws SQLException {
+    public List<Customer> findCustomers(){
         return customerService.findCustomers();
     }
 

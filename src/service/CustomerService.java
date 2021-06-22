@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface CustomerService {
     public boolean insertCustomer(Customer customer) throws SQLException;
-    public List<Customer> findCustomers() throws SQLException;
+    public List<Customer> findCustomers();
     public boolean deleteCustomer(int id) throws SQLException;
     public boolean updateCustomer(Customer customer) throws SQLException;
     public boolean changeCustomerPwd(String username,String oldPassword,String newPassword);
