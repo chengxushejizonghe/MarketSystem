@@ -76,9 +76,9 @@ public class CustomerDaoImpl extends BaseDao<Customer> implements CustomerDao{
     }
 
     @Override
-    public boolean changeCustomerPwd(String password,int id) {
-        String sql = "update customer set password = ? where id = ?";
-        boolean flag = update(conn,sql,password,id) > 0;
+    public boolean changeCustomerPwd(String username,String oldPassword,String newPassword) {
+        String sql = "update customer set password = ? where username = ? and password = ?";
+        boolean flag = update(conn,sql,newPassword,username,oldPassword) > 0;
         return flag;
     }
 
@@ -86,6 +86,39 @@ public class CustomerDaoImpl extends BaseDao<Customer> implements CustomerDao{
     public Customer findCustomerByLogin(String username, String password) {
         String sql = "select * from customer where username = ? and password = ?";
         return getInstance(conn,sql,username,password);
+    }
+
+    @Override
+    public Customer findCustomerByName(String name) {
+        String sql = "select * from customer where username = ?";
+        return getInstance(conn,sql,name);
+    }
+
+    /**
+     * 增加或减少用户的余额
+     *
+     * @param username 用户名
+     * @param password 密码
+     * @param change   用户余额增加或减少的量，change>0为增加余额，反之减少余额
+     * @return 是否修改成功
+     */
+    @Override
+    public boolean increaseOrDecreaseCustomerBalance(String username, String password, double change) {
+        String sql = "update customer set balance = balance + ? where username = ? and password = ?";
+        return update(conn,sql,change,username,password) > 0;
+    }
+
+    /**
+     * 提升用户等级
+     *
+     * @param username   用户名
+     * @param change 等级变化量
+     * @return
+     */
+    @Override
+    public boolean upgradeCustomerLevel(String username, int change) {
+        String sql = "update customer set level = level + 1 where username = ?";
+        return update(conn,sql,username,change) > 0;
     }
 
     @Override

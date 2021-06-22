@@ -84,6 +84,20 @@ public class ViewUtility {
         return c;
     }
 
+    public static char readSelectionByAdminType() {
+        char c;
+        for (;;){
+            String str = readKeyBoard(1,false).toUpperCase();
+            c = str.charAt(0);
+            if (c == 'U' || c == 'I'){
+                break;
+            }else {
+                System.out.print("选择错误，请重新输入：");
+            }
+        }
+        return c;
+    }
+
     /**
      * 从键盘中读取字符串
      * @return
@@ -96,7 +110,6 @@ public class ViewUtility {
 
     private static String readKeyBoard(int limit, boolean blankReturn) {
         String line = "";
-
         while (scanner.hasNextLine()) {
             line = scanner.nextLine();
             if (line.length() == 0) {

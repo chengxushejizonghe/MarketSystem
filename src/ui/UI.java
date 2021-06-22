@@ -83,7 +83,7 @@ public class UI {
         System.out.println("------------------校园超市管理信息系统------------------");
         System.out.println("---------------------管理员登录界面---------------------");
         System.out.println("管理员类型：用户管理员(U)||库存管理员(I)");
-        String adminType = ViewUtility.readString();
+        char adminType = ViewUtility.readSelectionByAdminType();
         System.out.println("用户名：");
         String username = ViewUtility.readString();
         System.out.println("密码:");

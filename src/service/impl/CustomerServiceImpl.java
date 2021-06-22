@@ -13,11 +13,9 @@ import java.util.List;
  */
 
 public class CustomerServiceImpl implements CustomerService {
-    private static CustomerDao customerDao;
+    CustomerDao customerDao = new CustomerDaoImpl();
 
-    public CustomerServiceImpl() {
-        customerDao = new CustomerDaoImpl();
-    }
+
 
 
     @Override
@@ -42,13 +40,33 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public boolean changeCustomerPwd(String password,int id){
-        return customerDao.changeCustomerPwd(password,id);
+    public boolean changeCustomerPwd(String username,String oldPassword,String newPassword){
+        return customerDao.changeCustomerPwd(username,oldPassword,newPassword);
+    }
+
+    @Override
+    public Customer findCustomerById(int id) {
+        return customerDao.findCustomerById(id);
+    }
+
+    @Override
+    public Customer findCustomerByName(String name) {
+        return customerDao.findCustomerByName(name);
     }
 
     @Override
     public Customer findCustomerByLogin(String username,String password) {
         return customerDao.findCustomerByLogin(username,password);
+    }
+
+    @Override
+    public boolean increaseOrDecreaseCustomerBalance(String username, String password, double change) {
+        return customerDao.increaseOrDecreaseCustomerBalance(username, password, change);
+    }
+
+    @Override
+    public boolean upgradeCustomerLevel(String username, int change) {
+        return customerDao.upgradeCustomerLevel(username, change);
     }
 
 

@@ -9,7 +9,7 @@ import entry.InventoryManager;
  * @create 2021-06-20-0:46
  */
 public interface InventoryManagerService {
-    public InventoryManager loginInventoryManagerByLogin(String username,String password);
-    public boolean changeInventoryManagerPwd(String password,int id);
+    public InventoryManager findInventoryManagerByLogin(String username,String password);
+    public boolean changeInventoryManagerPwd(String username,String oldPassword,String newPassword);
 
 }

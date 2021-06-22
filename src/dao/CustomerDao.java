@@ -51,9 +51,28 @@ public interface CustomerDao {
      */
     public int getCustomersCount();
 
-    public boolean changeCustomerPwd(String password,int id);
+    public boolean changeCustomerPwd(String username,String oldPassword,String newPassword);
 
     public Customer findCustomerByLogin(String username,String password);
+
+    public Customer findCustomerByName(String name);
+
+    /**
+     * 增加或减少用户的余额
+     * @param username 用户名
+     * @param password 密码
+     * @param change 用户余额增加或减少的量，change>0为增加余额，反之减少余额
+     * @return 是否修改成功
+     */
+    public boolean increaseOrDecreaseCustomerBalance(String username,String password,double change);
+
+    /**
+     * 提升用户等级
+     * @param username 用户名
+     * @param change 等级变化量
+     * @return
+     */
+    public boolean upgradeCustomerLevel(String username,int change);
 
     public Connection getConnection();
 }

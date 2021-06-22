@@ -28,10 +28,9 @@ public class TestCustomerDao {
         Customer customer = new Customer();
         customer.setUsername("我是你爸");
         customer.setPassword("54321");
-        customer.setBalance(100);
         customer.setRealName("Jerry Bob");
         customer.setContactPhone("13823878923");
-        customer.setEmail("acs546@gmail.com");
+        customer.setEmail("a7789546@gmail.com");
         CustomerDao customerDao = new CustomerDaoImpl();
         System.out.println(customerDao.insertCustomer(customer));
     }
@@ -61,16 +60,17 @@ public class TestCustomerDao {
     @Test
     public void testFindCustomerById(){
         CustomerDao customerDao = new CustomerDaoImpl();
-        Customer customer = customerDao.findCustomerById(4);
+        Customer customer = customerDao.findCustomerById(10);
         System.out.println(customer);
     }
 
     @Test
     public void testChangeCustomerPwd(){
-        int id = 4;
+        String username = "lbwnb";
+        String oldPassword = "123456";
+        String newPassword = "321654";
         CustomerDao customerDao = new CustomerDaoImpl();
-        String changePassword = "3356";
-        System.out.println(customerDao.changeCustomerPwd(changePassword,id));
+        System.out.println(customerDao.changeCustomerPwd(username,oldPassword,newPassword));
     }
 
     @Test
@@ -85,5 +85,14 @@ public class TestCustomerDao {
         }else {
             System.out.println("登录失败");
         }
+    }
+
+    @Test
+    public void testCustomerChangeBalance(){
+        String username = "lbwnb";
+        String password = "321654";
+        CustomerDao customerDao = new CustomerDaoImpl();
+        double chongzhi = 50.23;
+        System.out.println(customerDao.increaseOrDecreaseCustomerBalance(username,password,chongzhi));
     }
 }
