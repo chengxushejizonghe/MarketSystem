@@ -7,6 +7,7 @@ import org.junit.Test;
 import utills.JDBCUtils;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -94,5 +95,10 @@ public class TestCustomerDao {
         CustomerDao customerDao = new CustomerDaoImpl();
         double chongzhi = 50.23;
         System.out.println(customerDao.increaseOrDecreaseCustomerBalance(username,password,chongzhi));
+    }
+
+    @Test
+    public void test(){
+        System.out.println(Double.parseDouble("1d.23"));
     }
 }
