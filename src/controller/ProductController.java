@@ -34,6 +34,24 @@ public class ProductController {
     }
 
     /**
+     * 添加商品
+     */
+    public boolean addProduct(Product product){
+        if (productService.findProductByName(product.getProductName())!=null){
+            System.out.println("该商品已存在");
+            return false;
+        }else {
+            if (productService.addProduct(product)){
+                System.out.println("商品添加成功");
+                return true;
+            }else {
+                System.out.println("添加商品失败");
+                return false;
+            }
+        }
+    }
+
+    /**
      * 修改商品信息
      * @param product
      * @return

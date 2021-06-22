@@ -34,6 +34,11 @@ public class ProductServiceImpl implements ProductService {
         return productDao.updateProduct(product);
     }
 
+    @Override
+    public Product findProductByName(String productName) {
+        return productDao.findProductByName(productName);
+    }
+
     /**
      * 减少商品数量，或购买商品导致数量减少
      *

@@ -14,6 +14,7 @@ public interface ProductService {
     public List<Product> findProducts();
     public Product findProductById(int id);
     public boolean updateProduct(Product product);
+    public Product findProductByName(String productName);
     /**
      * 减少商品数量，或购买商品导致数量减少
      * @param id 商品编号
