@@ -66,7 +66,14 @@ public class CustomerController {
      * 修改用户信息
      */
     public boolean updateCustomer(Customer customer) throws SQLException {
-        return customerService.updateCustomer(customer);
+        if (customerService.updateCustomer(customer)){
+            //set username = ?,password = ?,realName = ?,contactPhone = ?,email = ?,level = ? where id = ?
+            System.out.println("修改用户信息成功！");
+            return true;
+        }else {
+            System.out.println("修改用户信息失败!");
+            return false;
+        }
         //set username = ?,password = ?,realName = ?,contactPhone = ?,email = ?,level = ? where id = ?
     }
 }
