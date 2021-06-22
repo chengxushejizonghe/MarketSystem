@@ -3,6 +3,7 @@ package service;
 import entry.Customer;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -10,6 +11,7 @@ import java.util.List;
  * @create 2021-06-09-19:13
  */
 public interface CustomerService {
+	public List<Customer> selectCustomer();
     public boolean insertCustomer(Customer customer) throws SQLException;
     public List<Customer> findCustomers();
     public boolean deleteCustomer(int id) throws SQLException;

@@ -8,6 +8,7 @@ import service.impl.CustomerServiceImpl;
 import service.impl.ProductServiceImpl;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class CustomerController {
@@ -20,6 +21,13 @@ public class CustomerController {
         this.productService = new ProductServiceImpl();
     }
 
+    /**
+     * 查询用户个人信息
+     * @return
+     */
+    public List<Customer> selectCustomer(){
+    	return customerService.selectCustomer();
+    }
     /**
      * 查找所有用户
      * @return

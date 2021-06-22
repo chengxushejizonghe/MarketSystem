@@ -3,6 +3,7 @@ package dao;
 import entry.Customer;
 
 import java.sql.Connection;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -11,6 +12,11 @@ import java.util.List;
  */
 public interface CustomerDao {
 
+    /**
+     * 查询用户个人信息
+     * @return
+     */
+	public List<Customer> selectCustomer();
     /**
      * customer对象添加到数据库中
      * @param customer
