@@ -88,6 +88,12 @@ public class ProductDaoImpl extends BaseDao<Product> implements ProductDao{
     }
 
     @Override
+    public boolean increaseSalesVolume(int id, int count) {
+        String sql = "update product set salesVolume = salesVolume + ? where id = ?";
+        return update(connection,sql,count,id)>0;
+    }
+
+    @Override
     public Connection getConnection() {
         return connection;
     }

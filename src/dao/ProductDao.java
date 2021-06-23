@@ -32,6 +32,7 @@ public interface ProductDao {
      * @return
      */
     public boolean increaseProductCount(int id,int count);
+    public boolean increaseSalesVolume(int id,int count);
     public Connection getConnection();
 
 }

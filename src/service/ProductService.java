@@ -31,4 +31,6 @@ public interface ProductService {
      * @return
      */
     public boolean increaseProductCount(int id,int count);
+
+    public boolean increaseSalesVolume(int id,int count);
 }

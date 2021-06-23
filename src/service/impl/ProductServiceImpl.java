@@ -66,4 +66,9 @@ public class ProductServiceImpl implements ProductService {
     public boolean increaseProductCount(int id, int count) {
         return productDao.increaseProductCount(id,count);
     }
+
+    @Override
+    public boolean increaseSalesVolume(int id, int count) {
+        return productDao.increaseSalesVolume(id,count);
+    }
 }

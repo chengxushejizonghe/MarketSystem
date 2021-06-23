@@ -14,14 +14,14 @@ public class Arithmetic {
 
 
     //商品冒泡排序算法
-    private static List<Product> PriceSort(List<Product> products){//价格
+    public static List<Product> PriceSort(List<Product> products){//价格
   
         for (int i = 0; i < products.size() - 1; i++) {  
             for (int j = 1; j < products.size() - i; j++) {  
             	Product temp;  
                 if (products.get(j - 1).getPrice() - products.get(j).getPrice() > 0) { // 比较两个整数的大小  
   
-                    temp = products.get(j - 1);  
+                    temp = products.get(j - 1);
                     products.set((j - 1), products.get(j));  
                     products.set(j, temp);  
                 }  
@@ -30,7 +30,7 @@ public class Arithmetic {
         return products;
     }  
     
-    private static List<Product> QuantitySort(List<Product> products){//数量
+    public static List<Product> QuantitySort(List<Product> products){//数量
     	  
         for (int i = 0; i < products.size() - 1; i++) {  
             for (int j = 1; j < products.size() - i; j++) {  
@@ -48,7 +48,7 @@ public class Arithmetic {
 
     
     
-    private static List<Product> SalesVolumeSort(List<Product> products){//销量
+    public static List<Product> SalesVolumeSort(List<Product> products){//销量
   	  
         for (int i = 0; i < products.size() - 1; i++) {  
             for (int j = 1; j < products.size() - i; j++) {  
@@ -64,7 +64,7 @@ public class Arithmetic {
         return products;
     }
     
-    private static List<Product> LocalDateTimeSort(List<Product> products){//生产日期
+    public static List<Product> LocalDateTimeSort(List<Product> products){//生产日期
     	  
         for (int i = 0; i < products.size() - 1; i++) {  
             for (int j = 1; j < products.size() - i; j++) {  
@@ -83,10 +83,7 @@ public class Arithmetic {
 
 
     //用户希尔排序算法
-    public class Shell//用户余额
-    {
-    	
-    	public List<Customer> sort(List<Customer> customers){
+    	public static List<Customer> sort(List<Customer> customers){
 
     		int n = customers.size();
     		int gap = n/2;
@@ -103,11 +100,7 @@ public class Arithmetic {
     		}
     		return customers;
     	}
-    }
 
-    
-    
-    
   //快速排序
 
     /**public static List<Customer> quickSort1(List<Customer> customers) {//用户余额

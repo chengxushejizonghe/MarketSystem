@@ -1,17 +1,17 @@
 package test;
 
+import arithmetic.Arithmetic;
 import controller.CustomerController;
 import controller.LoginController;
 import controller.ProductController;
 import controller.UsersManagerController;
 import entry.Customer;
 import entry.Product;
-import ui.UI;
 import utills.ViewUtility;
-
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -557,12 +557,33 @@ public class UITest {
     public void usersList(){
         System.out.println("--------------------用户列表---------------------");
         List<Customer> customerList = customerController.findCustomers();
-        if (customerList.size() != 0){
+        List<Customer> customerListAfterSort = new ArrayList<>();
+        char yn = ViewUtility.readConfirmSelection();
+        if (yn == 'Y'){
+            System.out.println("1.按用户余额排序");
+            System.out.println("2.按用户等级排序");
+            System.out.println("3.按用户注册时间排序");
+            char key = ViewUtility.readMenuSelection();
+            switch (key){
+                case '1':
+                    customerListAfterSort = Arithmetic.sort(customerList);
+                    break;
+                case '2':
+                    customerListAfterSort = Arithmetic.quickSort2(customerList);
+                    break;
+                case '3':
+                    customerListAfterSort = Arithmetic.quickSort3(customerList);
+                    break;
+            }
+        }else {
+            customerListAfterSort = customerList;
+        }
+        if (customerListAfterSort.size() != 0){
             System.out.println("用户编号(id)\t用户名(username)\t密码(password)\t用户余额(balance)\t真实姓名(realName)\t联系方式(contactPhone)\t邮箱(email)\t用户等级");
         }else {
             System.out.println("当前没有用户");
         }
-        for (Customer c: customerList){
+        for (Customer c: customerListAfterSort){
             System.out.println(" "+c.getId()+" "+c.getUsername()+" "+c.getPassword()+" "+c.getBalance()+
                     " "+c.getRealName()+" "+c.getCreationTime()+" "+c.getContactPhone()+" "+c.getEmail()+" "+c.getLevel());
         }
@@ -574,13 +595,40 @@ public class UITest {
     public void productsList(){
         System.out.println("--------------------商品列表---------------------");
         List<Product> productList = productController.findProducts();
-        if (productList.size() != 0){
+        List<Product> productListAfterSort = new ArrayList<>();
+        System.out.println("是否排序（y/n）：");
+        char yn = ViewUtility.readConfirmSelection();
+        if (yn == 'Y'){
+            System.out.println("1.按照商品价格排序");
+            System.out.println("2.按照商品库存量排序");
+            System.out.println("3.按照商品销量排序");
+            System.out.println("4.按生产日期排序");
+            char key = ViewUtility.readMenuSelection();
+            switch (key){
+                case '1':
+                    productListAfterSort = Arithmetic.PriceSort(productList);
+                    break;
+                case '2':
+                    productListAfterSort = Arithmetic.QuantitySort(productList);
+                    break;
+                case '3':
+                    productListAfterSort = Arithmetic.SalesVolumeSort(productList);
+                    break;
+                case '4':
+                    productListAfterSort = Arithmetic.LocalDateTimeSort(productList);
+                    break;
+            }
+        }else {
+            productListAfterSort = productList;
+        }
+
+        if (productListAfterSort.size() != 0){
             System.out.println("商品编号(id)\t商品名称(productName)\t价格(price)\t商品类别(type)\t生产日期(productionDate)\t库存量(quantity)\t销量(salesVolume)");
         }else {
             System.out.println("当前没有商品");
             return;
         }
-        for (Product p :productList){
+        for (Product p :productListAfterSort){
             System.out.println(" "+p.getId()+" "+p.getProductName()+" "+p.getPrice()+" "+
                     p.getType()+" "+p.getProductionDate()+" "+p.getQuantity()+" "+p.getSalesVolume());
         }

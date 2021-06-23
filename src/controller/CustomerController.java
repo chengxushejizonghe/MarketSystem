@@ -171,7 +171,8 @@ public class CustomerController {
             return false;
         }
         if(productService.decreaseProductCount(product.getId(),count)&&
-        customerService.increaseOrDecreaseCustomerBalance(username,password,-(product.getPrice()*discount))) {
+        customerService.increaseOrDecreaseCustomerBalance(username,password,-(product.getPrice()*discount))
+                &&productService.increaseSalesVolume(product.getId(), count)) {
             System.out.println("商品购买成功！");
             return true;
         }
