@@ -197,11 +197,11 @@ public class CustomerController {
             return false;
         }
         double cost = change*10;
-        if (cost > customer.getLevel()){
+        if (cost > customer.getBalance()){
             System.out.println("账户余额不足");
             return false;
         }
-        if (customerService.increaseOrDecreaseCustomerBalance(username,password,change)&&customerService.upgradeCustomerLevel(username,password
+        if (customerService.increaseOrDecreaseCustomerBalance(username,password,cost)&&customerService.upgradeCustomerLevel(username,password
         ,change)) {
             System.out.println("用户升级成功");
             return true;
