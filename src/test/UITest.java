@@ -229,7 +229,7 @@ public class UITest {
             System.out.println("2.添加商品");
             System.out.println("3.删除商品");
             System.out.println("4.修改商品信息");
-            System.out.println("5.补充或减少库存");
+            System.out.println("5.补充或清理商品库存");
             System.out.println("6.退出");
             System.out.println("请选择(1-5)：");
             key = ViewUtility.readMenuSelection();
@@ -259,12 +259,31 @@ public class UITest {
         System.out.println("------------------校园超市管理信息系统------------------");
         System.out.println("----------------------修改商品信息------------------------");
         Product product = new Product();
+        System.out.println("请输入商品名称：");
+        product.setProductName(ViewUtility.readString());
+        System.out.println("请输入商品价格：");
+        product.setPrice(ViewUtility.readDouble());
+        System.out.println("请输入商品类型：");
+        product.setType(ViewUtility.readString());
+        System.out.println("请输入商品生产日期：");
+        String date = ViewUtility.readString();
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime productDate = LocalDateTime.parse(date,df);
+        product.setProductionDate(productDate);
+        System.out.println("请输入商品数量：");
+        product.setQuantity(ViewUtility.readInt());
+        if (productController.updateProduct(product)){
+            System.out.println("-----------------------按回车键返回-------------------------");
+            ViewUtility.readReturn();
+        }
 
     }
 
     private void changeProductCount() {
         System.out.println("------------------校园超市管理信息系统------------------");
-        System.out.println("----------------------商品库存管理------------------------");
+        System.out.println("------------------商品库存补充和清理----------------------");
+        System.out.println("1.补充库存");
+        System.out.println("2.清理库存");
     }
 
     public void customerDetail(String username){

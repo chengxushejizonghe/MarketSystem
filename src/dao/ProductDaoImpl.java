@@ -45,9 +45,9 @@ public class ProductDaoImpl extends BaseDao<Product> implements ProductDao{
 
     @Override
     public boolean updateProduct(Product product) {
-        String sql = "update product set productName = ?,price = ?,type = ?,productionDate = ?,quantity = ?,salesVolume = ? where id = ?";
+        String sql = "update product set productName = ?,price = ?,type = ?,productionDate = ?,quantity = ? where id = ?";
         return update(connection,sql,product.getProductName(),product.getPrice(),product.getType(),product.getProductionDate(),
-                product.getQuantity(),product.getSalesVolume(),product.getId()) > 0;
+                product.getQuantity(),product.getId()) > 0;
     }
 
     @Override

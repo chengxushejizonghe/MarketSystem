@@ -58,7 +58,7 @@ public class ProductController {
      */
     public boolean updateProduct(Product product){
         //update product set productName = ?,price = ?,type = ?,productionDate = ?,
-        // quantity = ?,salesVolume = ? where id = ?
+        // quantity = ? where id = ?
         if(productService.updateProduct(product)){
             System.out.println("修改商品信息成功！");
             return true;
