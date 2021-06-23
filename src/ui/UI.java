@@ -23,10 +23,9 @@ public class UI {
 
     /**
      * 系统首页界面
-     * @param customer 
      * @throws SQLException 
      */
-    public void menu(Customer customer) throws SQLException{
+    public void menu() throws SQLException{
         boolean loopFlag =true;
         char key = 0;
         do {
@@ -49,7 +48,7 @@ public class UI {
                     break;
                 case '3':
                     System.out.println("转到用户注册界面");
-                    customerSignup(customer);
+                    customerSignup();
                 case '4':
                     System.out.println("确认是否退出(Y/N)：");
                     char yn = ViewUtility.readConfirmSelection();
@@ -61,10 +60,12 @@ public class UI {
         }while (loopFlag);
     }
 
-    /**
+
+	/**
      * 用户登录界面
+	 * @throws SQLException 
      */
-    public void customerLoginInterface(){
+    public void customerLoginInterface() throws SQLException{
         System.out.println("------------------校园超市管理信息系统------------------");
         System.out.println("---------------------用户登录界面---------------------");
         System.out.println("请输入用户名");
@@ -72,7 +73,7 @@ public class UI {
         System.out.println("请输入密码");
         String password = ViewUtility.readString();
         loginController.customerLogin(username,password);//调用控制层方法传入参数
-        customerIndex();//进入用户操作视图
+        customerIndex(username);//进入用户操作视图
     }        
 
 	/**
@@ -92,12 +93,9 @@ public class UI {
         
     /**
      * 用户首页
-     * @param password 
-     * @param money 
-     * @throws SQLException 
-     * 
+     * @param username 
      */
-    public void customerIndex(String username, Customer customer, String password, double money) throws SQLException{
+    public void customerIndex(String username) throws SQLException{
         boolean loopFlag =true;
         System.out.println("------------------校园超市管理信息系统------------------");
         System.out.println("--------------------用户"+username+"---------------------");
@@ -121,11 +119,11 @@ public class UI {
             break;
         case '3':
             System.out.println("转到修改个人信息");
-            customerController.updateCustomer(customer);
+            customerController.updateCustomer();
             break;
         case '4':
             System.out.println("转到充值");
-            customerController.recharge(username, password, money);
+            customerController.recharge();
             break;
         case '5':
             System.out.println("转到会员");
@@ -144,13 +142,17 @@ public class UI {
             break;
         }
     }
+    private void updateCustomer() {
+    	
+    }
+    private void recharge() {
+    	
+    }
 
     /**
      * 用户注册界面
-     * @param customer 
-     * @throws SQLException 
      */
-    public void customerSignup(Customer customer) throws SQLException{
+    public void customerSignup() throws SQLException{
         	System.out.println("------------------校园超市管理信息系统------------------");
             System.out.println("请输入用户名：");
             String username = ViewUtility.readString();
@@ -162,7 +164,7 @@ public class UI {
             String contactPhone = ViewUtility.readString();
             System.out.println("请输入邮箱：");
             String email = ViewUtility.readString();
-            customerController.addCustomer(customer);
+            customerController.addCustomer();
             customerLoginInterface();
     }
     
@@ -170,13 +172,8 @@ public class UI {
     /**
      * 用户管理员首页
      * @param username 用户管理员用户名
-     * @param oldPassword 
-     * @param userName 
-     * @param newPassword 
-     * @param customer 
-     * @throws SQLException 
      */
-    public void UsersManagerIndex(String username, String oldPassword, String userName, String newPassword, Customer customer) throws SQLException{
+    public void UsersManagerIndex(String username, String oldPassword, String newPassword) throws SQLException{
         boolean loopFlag =true;
         char key = 0;
         do {
@@ -198,7 +195,7 @@ public class UI {
                     break;
                 case '2':
                     System.out.println("转到添加用户");
-                    customerController.addCustomer(customer);
+                    customerController.addCustomer();
                     break;
                 case '3':
                     System.out.println("转到删除用户");
@@ -206,15 +203,15 @@ public class UI {
                     break;
                 case '4':
                     System.out.println("转到修改用户信息");
-                    customerController.updateCustomer(customer);
+                    customerController.updateCustomer();
                     break;
                 case '5':
                     System.out.println("转到修改用户密码");
-                    customerController.changeCustomerPwd(userName,oldPassword,newPassword);
+                    customerController.changeCustomerPwd(username,oldPassword,newPassword);
                     break;
                 case '6':
                     System.out.println("转到修改管理员密码");
-                    usersManagerController.changeUsersManagerPwd(userName,oldPassword,newPassword);
+                    usersManagerController.changeUsersManagerPwd(username,oldPassword,newPassword);
                     break;
                 case '7':
                     System.out.println("确认是否退出(Y/N)：");
@@ -225,6 +222,12 @@ public class UI {
                     break;
             }
         }while (loopFlag);
+    }
+    private void addCustomer() {
+    	
+    }
+    private void updateCustomer() {
+    	
     }
 
     /**
@@ -268,8 +271,17 @@ public class UI {
             break;
         }
     }
+    private void addProduct() {
+    	
+    }
+    private void deleteProduct() {
+    	
+    }
+    private void updateProduct() {
+    	
+    }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         UI ui = new UI();
         ui.menu();
     }

@@ -51,6 +51,12 @@ public class ProductDaoImpl extends BaseDao<Product> implements ProductDao{
     }
 
     @Override
+    public boolean deleteProduct(int id) {
+        String sql = "delete from product where id = ?";
+        return update(connection,sql,id) > 0;
+    }
+
+    @Override
     public Product findProductByName(String productName) {
         String sql = "select * from product where productName = ?";
         return getInstance(connection,sql,productName);

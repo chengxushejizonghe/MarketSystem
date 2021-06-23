@@ -68,5 +68,24 @@ public class ProductController {
         }
     }
 
+    /**
+     * 删除商品
+     */
+    public boolean deleteProduct(String username){
+        Product product = productService.findProductByName(username);
+        if (product!=null){
+            boolean isDelete = productService.deleteProduct(product.getId());
+            if (isDelete){
+                System.out.println("删除成功");
+            }else {
+                System.out.println("删除失败");
+            }
+            return isDelete;
+        }else {
+            System.out.println("用户不存在!");
+            return false;
+        }
+    }
+
 
 }

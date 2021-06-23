@@ -126,9 +126,9 @@ public class CustomerDaoImpl extends BaseDao<Customer> implements CustomerDao{
      * @return
      */
     @Override
-    public boolean upgradeCustomerLevel(String username, int change) {
-        String sql = "update customer set level = level + 1 where username = ?";
-        return update(conn,sql,username,change) > 0;
+    public boolean upgradeCustomerLevel(String username, String password,int change) {
+        String sql = "update customer set level = level + ? where username = ? and password = ?";
+        return update(conn,sql,change,username,password) > 0;
     }
 
     @Override

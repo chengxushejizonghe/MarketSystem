@@ -21,6 +21,6 @@ public interface CustomerService {
     public Customer findCustomerByName(String name);
     public Customer findCustomerByLogin(String username,String password);
     public boolean increaseOrDecreaseCustomerBalance(String username,String password,double change);
-    public boolean upgradeCustomerLevel(String username,int change);
+    public boolean upgradeCustomerLevel(String username,String password,int change);
 
 }

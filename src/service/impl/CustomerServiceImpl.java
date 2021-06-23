@@ -70,8 +70,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public boolean upgradeCustomerLevel(String username, int change) {
-        return customerDao.upgradeCustomerLevel(username, change);
+    public boolean upgradeCustomerLevel(String username, String password,int change) {
+        return customerDao.upgradeCustomerLevel(username, password,change);
     }
 
 
