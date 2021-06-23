@@ -159,7 +159,7 @@ public class CustomerController {
                 discount = 0.8;
                 break;
             case 3:
-                discount = 0.75;
+                discount = 0.7;
                 break;
         }
         if (customer == null){
@@ -205,11 +205,11 @@ public class CustomerController {
             return false;
         }
         double cost = change*10;
-        if (cost > customer.getLevel()){
+        if (cost > customer.getBalance()){
             System.out.println("账户余额不足");
             return false;
         }
-        if (customerService.increaseOrDecreaseCustomerBalance(username,password,change)&&customerService.upgradeCustomerLevel(username,password
+        if (customerService.increaseOrDecreaseCustomerBalance(username,password,cost)&&customerService.upgradeCustomerLevel(username,password
         ,change)) {
             System.out.println("用户升级成功");
             return true;
