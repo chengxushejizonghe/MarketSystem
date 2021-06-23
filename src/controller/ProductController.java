@@ -87,5 +87,42 @@ public class ProductController {
         }
     }
 
+    /**
+     * 增加商品数量
+     * @return
+     */
+    public boolean increaseProductCount(int id,int count){
+        if (productService.findProductById(id) != null){
+            if(productService.increaseProductCount(id,count)){
+                System.out.println("操作成功，商品数量增加");
+                return true;
+            }else {
+                System.out.println("操作失败");
+                return false;
+            }
+        }else {
+            System.out.println("找不到该商品");
+            return false;
+        }
+    }
 
+    /**
+     * 减少商品数量
+     * @return
+     */
+    public boolean decreaseProductCount(int id,int count){
+        if (productService.findProductById(id) != null){
+            if(productService.decreaseProductCount(id,count)){
+                System.out.println("操作成功，商品数量减少");
+                return true;
+            }else {
+                System.out.println("操作失败");
+                return false;
+            }
+        }else {
+            System.out.println("找不到该商品");
+            return false;
+        }
+    }
 }
+

@@ -3,6 +3,7 @@ package test;
 import controller.CustomerController;
 import controller.LoginController;
 import controller.ProductController;
+import controller.UsersManagerController;
 import entry.Customer;
 import entry.Product;
 import ui.UI;
@@ -20,12 +21,13 @@ import java.util.List;
 public class UITest {
     private final LoginController loginController = new LoginController();
     private final CustomerController customerController = new CustomerController();
+    private final UsersManagerController usersManagerController = new UsersManagerController();
     private final ProductController productController = new ProductController();
 
     /**
      * 系统首页界面
      */
-    public void menu(){
+    public void menu() throws SQLException {
         boolean loopFlag =true;
         char key = 0;
         do {
@@ -48,6 +50,7 @@ public class UITest {
                     break;
                 case '3':
                     System.out.println("转到用户注册界面");
+                    customerSignup();
                 case '4':
                     System.out.println("确认是否退出(Y/N)：");
                     char yn = ViewUtility.readConfirmSelection();
@@ -62,7 +65,7 @@ public class UITest {
     /**
      * 用户登录界面
      */
-    public void customerLoginInterface(){
+    public void customerLoginInterface() throws SQLException {
         while (true) {
             System.out.println("------------------校园超市管理信息系统------------------");
             System.out.println("---------------------用户登录界面---------------------");
@@ -86,7 +89,7 @@ public class UITest {
     /**
      * 管理员登录界面
      */
-    public void adminLoginInterface(){
+    public void adminLoginInterface() throws SQLException {
         System.out.println("------------------校园超市管理信息系统------------------");
         System.out.println("---------------------管理员登录界面---------------------");
         System.out.println("管理员类型：用户管理员(U)||库存管理员(I)");
@@ -109,7 +112,7 @@ public class UITest {
     /**
      * 用户首页
      */
-    public void customerIndex(String username){
+    public void customerIndex(String username) throws SQLException {
         boolean loopFlag =true;
         char key = 0;
         do {
@@ -133,21 +136,33 @@ public class UITest {
                 case '3':
                     customerDetail(username);
                 case '4':
-
+                    updateCustomerByPersonal(username);
                 case '5':
+                    addBalance(username);
                 case '6':
+                    updateCustomerByPersonal(username);
                 case '7':
+                    deleteCustomer(username);
                 case '8':
+                    System.out.println("确认是否登出(Y/N)：");
+                    char yn = ViewUtility.readConfirmSelection();
+                    if (yn == 'Y'){
+                        loopFlag = false;
+                    }
+                    break;
             }
             System.out.println();
         }while (loopFlag);
     }
 
+
+
+
     /**
      * 用户管理员首页
      * @param username 用户管理员用户名
      */
-    public void UsersManagerIndex(String username){
+    public void UsersManagerIndex(String username) throws SQLException {
         boolean loopFlag =true;
         char key = 0;
         do {
@@ -164,11 +179,31 @@ public class UITest {
             key = ViewUtility.readMenuSelection();
             switch (key){
                 case '1':
+                    usersList();
                 case '2':
+                    addCustomer();
                 case '3':
+                    System.out.println("请输入要删除的用户的用户名");
+                    String cname = ViewUtility.readString();
+                    deleteCustomer(cname);
                 case '4':
+                    System.out.println("请输入要修改的用户名：");
+                    String cname1 = ViewUtility.readString();
+                    updateCustomerByPersonal(cname1);
                 case '5':
+                    System.out.println("请输入用户名：");
+                    String cuname = ViewUtility.readString();
+                    System.out.println("请输入旧密码：");
+                    String oldPassword0 = ViewUtility.readString();
+                    System.out.println("请输入新密码：");
+                    String newPassword0 = ViewUtility.readString();
+                    customerController.changeCustomerPwd(cuname,oldPassword0,newPassword0);
                 case '6':
+                    System.out.println("请输入旧密码：");
+                    String oldPassword = ViewUtility.readString();
+                    System.out.println("请输入新密码：");
+                    String newPassword = ViewUtility.readString();
+                    usersManagerController.changeUsersManagerPwd(username,oldPassword,newPassword);
                 case '7':
                     System.out.println("确认是否退出(Y/N)：");
                     char yn = ViewUtility.readConfirmSelection();
@@ -185,14 +220,51 @@ public class UITest {
      * @param username 库存管理员用户名
      */
     public void InventoryManagerIndex(String username){
+        boolean loopFlag =true;
+        char key = 0;
+        do {
+            System.out.println("------------------校园超市管理信息系统------------------");
+            System.out.println("-----------------库存管理员" + username + "-------------------");
+            System.out.println("1.查看商品列表");
+            System.out.println("2.添加商品");
+            System.out.println("3.删除商品");
+            System.out.println("4.修改商品信息");
+            System.out.println("5.补充或减少库存");
+            System.out.println("6.退出");
+            System.out.println("请选择(1-5)：");
+            key = ViewUtility.readMenuSelection();
+            switch (key){
+                case '1':
+                    productsList();
+                case '2':
+                    addProduct();
+                case '3':
+                    deleteProduct();
+                case '4':
+                    changeProductCount();
+                case '5':
+                    updateProduct();
+                case '6':
+                    System.out.println("确认是否退出(Y/N)：");
+                    char yn = ViewUtility.readConfirmSelection();
+                    if (yn == 'Y'){
+                        loopFlag = false;
+                    }
+                    break;
+            }
+        }while (loopFlag);
+    }
+
+    private void updateProduct() {
         System.out.println("------------------校园超市管理信息系统------------------");
-        System.out.println("-----------------库存管理员"+username+"-------------------");
-        System.out.println("1.查看商品列表");
-        System.out.println("2.添加商品");
-        System.out.println("3.删除商品");
-        System.out.println("4.修改商品信息");
-        System.out.println("5.退出");
-        System.out.println("请选择(1-5)：");
+        System.out.println("----------------------修改商品信息------------------------");
+        Product product = new Product();
+
+    }
+
+    private void changeProductCount() {
+        System.out.println("------------------校园超市管理信息系统------------------");
+        System.out.println("----------------------商品库存管理------------------------");
     }
 
     public void customerDetail(String username){
@@ -263,7 +335,49 @@ public class UITest {
         customerController.addCustomer(customer);
     }
 
+    private void updateCustomerByPersonal(String username) throws SQLException {
+        System.out.println("-----------------------校园超市管理信息系统------------------");
+        System.out.println("----------------------修改用户"+username+"-----------------------");
+        Customer customer = new Customer();
+        customer.setUsername(username);
+        System.out.println("请输入新密码");
+        customer.setPassword(ViewUtility.readString());
+        System.out.println("真实姓名：");
+        customer.setRealName(ViewUtility.readString());
+        System.out.println("联系电话:");
+        customer.setContactPhone(ViewUtility.readString());
+        System.out.println("邮箱：");
+        customer.setEmail(ViewUtility.readString());
+        if (customerController.updateCustomer(customer)){
+            System.out.println("---------------------------");
+        }
+    }
 
+    private void deleteCustomer(String username) throws SQLException {
+        System.out.println("-----------------------校园超市管理信息系统------------------");
+        System.out.println("----------------------注销用户"+username+"-----------------------");
+        char yn = ViewUtility.readConfirmSelection();
+        if (yn == 'Y') {
+            if(customerController.deleteCustomer(username)){
+                System.out.println("-----------------------按回车键返回-------------------------");
+                ViewUtility.readReturn();
+            }
+        }
+    }
+
+    private void addBalance(String username) {
+        System.out.println("-----------------------校园超市管理信息系统------------------");
+        System.out.println("--------------------------充值页面-------------------------");
+        System.out.println("用户名"+username);
+        System.out.println("输入密码：");
+        String password = ViewUtility.readString();
+        System.out.println("输入充值金额: ");
+        double money = ViewUtility.readDouble();
+        if(customerController.recharge(username,password,money)){
+            System.out.println("-----------------------按回车键返回-------------------------");
+            ViewUtility.readReturn();
+        }
+    }
 
     public void addProduct(){
         System.out.println("------------------校园超市管理信息系统------------------");
@@ -318,9 +432,8 @@ public class UITest {
         char yn = ViewUtility.readConfirmSelection();
         if (yn == 'Y'){
             if (customerController.pay(productName,count,username,password)){
-                System.out.println("-------------------------------------------------");
-            }else {
-                System.out.println("商品购买成功");
+                System.out.println("-----------------------按回车键返回-------------------------");
+                ViewUtility.readReturn();
             }
         }
     }
