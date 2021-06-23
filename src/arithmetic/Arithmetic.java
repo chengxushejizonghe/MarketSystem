@@ -83,42 +83,34 @@ public class Arithmetic {
 
 
     //用户希尔排序算法
-    public class ShellSortDemo {
-    	/* An utility function to print array of size n */
-     
-    	/* function to sort array using shellSort */
-    	void sort(int A[]) {
-    		int n = A.length;
-     
-    		// Start with a larger gap, then reduce the gap to 1
-    		// we take gap sequence in order of |N/2|, |N/4|, |N/8|...1
-    		for (int gap = n / 2; gap > 0; gap /= 2) {
-    			// we perform gapped insertion sort for this gap size.
-    			// The first gap elements a[0..gap-1] are already
-    			// in gapped order keep adding one more element
-    			// until the entire array is gap sorted
-    			for (int i = gap; i < n; i += 1) {
-    				// store a[i] in temp and make a hole at
-    				// position i
-    				int temp = A[i];
-    				// shift earlier gap-sorted elements up until
-    				// the correct location for a[i] is found
-    				int j;
-    				for (j = i; j >= gap && A[j - gap] > temp; j -= gap)
-    					A[j] = A[j - gap];
-     
-    				// put temp (the original a[i]) in its correct
-    				// location
-    				A[j] = temp;
+    public class Shell//用户余额
+    {
+    	
+    	public List<Customer> sort(List<Customer> customers){
+
+    		int n = customers.size();
+    		int gap = n/2;
+    		while(gap > 0){
+    			for(int j = gap; j < n; j++){
+    				int i=j;
+    				while(i >= gap && customers.get(i-gap).getBalance()> customers.get(i).getBalance()){
+    					double temp = customers.get(i-gap).getBalance() + customers.get(i).getBalance();
+    					customers.get(i-gap).setBalance(temp-customers.get(i-gap).getBalance());
+    					i -= gap;
+    				}
     			}
+    			gap = gap/2;
     		}
+    		return customers;
     	}
     }
 
     
+    
+    
   //快速排序
 
-    public static List<Customer> quickSort1(List<Customer> customers) {//用户余额
+    /**public static List<Customer> quickSort1(List<Customer> customers) {//用户余额
     	 
 		Customer pivot = customers.get(0); //可替换代码
 		//int mid = arr.size()/2;
@@ -150,6 +142,7 @@ public class Arithmetic {
  
 		return customers;
 	}
+    **/
     
     public static List<Customer> quickSort2(List<Customer> customers) {//会员等级
    	 
