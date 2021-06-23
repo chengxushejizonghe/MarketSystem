@@ -69,6 +69,11 @@ public class UITest {
         while (true) {
             System.out.println("------------------校园超市管理信息系统------------------");
             System.out.println("---------------------用户登录界面---------------------");
+            System.out.println("是否登录(Y/N)");
+            char yn = ViewUtility.readConfirmSelection();
+            if (yn == 'N'){
+                break;
+            }
             System.out.println("请输入用户名");
             String username = ViewUtility.readString();
             System.out.println("请输入密码");
@@ -284,6 +289,26 @@ public class UITest {
         System.out.println("------------------商品库存补充和清理----------------------");
         System.out.println("1.补充库存");
         System.out.println("2.清理库存");
+        char key = ViewUtility.readMenuSelection();
+        if (key == '1'){
+            System.out.println("输入商品id：");
+            int id = ViewUtility.readInt();
+            System.out.println("输入补充数量：");
+            int count = ViewUtility.readInt();
+            if (productController.increaseProductCount(id,count)){
+                System.out.println("-----------------------按回车键返回-------------------------");
+                ViewUtility.readReturn();
+            }
+        }else if (key == '2'){
+            System.out.println("输入商品id：");
+            int id = ViewUtility.readInt();
+            System.out.println("输入清理数量：");
+            int count = ViewUtility.readInt();
+            if (productController.decreaseProductCount(id,count)){
+                System.out.println("-----------------------按回车键返回-------------------------");
+                ViewUtility.readReturn();
+            }
+        }
     }
 
     public void customerDetail(String username){
