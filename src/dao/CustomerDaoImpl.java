@@ -4,6 +4,7 @@ import entry.Customer;
 import utills.JDBCUtils;
 
 import java.sql.Connection;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -13,6 +14,15 @@ import java.util.List;
 public class CustomerDaoImpl extends BaseDao<Customer> implements CustomerDao{
 
     public Connection conn = JDBCUtils.getConnection();
+    /**
+     * 查询用户个人信息
+     * @return 将查询得到的结果集用List返回
+     */
+    public List<Customer> selectCustomer() {
+        String sql = "select * from customer where username = ?";
+        //        JDBCUtils.releaseAll(conn,null);
+        return getForList(conn,sql);
+    }
     /**
      * 向Customer表插入数据
      * @param customer 从service层值传递获得
@@ -125,4 +135,5 @@ public class CustomerDaoImpl extends BaseDao<Customer> implements CustomerDao{
     public Connection getConnection() {
         return conn;
     }
+
 }

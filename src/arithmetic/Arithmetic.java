@@ -201,13 +201,16 @@ public class Arithmetic {
 		customers.addAll(bigger);
  
 		return customers;
-	}
+    }
 
     
  }
 
 
+<<<<<<< HEAD
+=======
 
 
 
+>>>>>>> branch 'master' of https://github.com/chengxushejizonghe/MarketSystem.git
 

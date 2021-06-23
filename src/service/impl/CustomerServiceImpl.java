@@ -5,6 +5,8 @@ import dao.CustomerDaoImpl;
 import entry.Customer;
 import service.CustomerService;
 
+import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -14,8 +16,11 @@ import java.util.List;
 
 public class CustomerServiceImpl implements CustomerService {
     CustomerDao customerDao = new CustomerDaoImpl();
-
-
+    
+    @Override
+    public List<Customer> selectCustomer(){
+    	return customerDao.selectCustomer();
+    }
 
 
     @Override
