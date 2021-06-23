@@ -151,7 +151,7 @@ public class CustomerController {
                 discount = 0.8;
                 break;
             case 3:
-                discount = 0.75;
+                discount = 0.7;
                 break;
         }
         if (customer == null){

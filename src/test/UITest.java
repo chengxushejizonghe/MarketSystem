@@ -128,7 +128,7 @@ public class UITest {
             System.out.println("3.查看个人信息");
             System.out.println("4.修改个人信息");
             System.out.println("5.充值");
-            System.out.println("6.会员");
+            System.out.println("6.升级会员");
             System.out.println("7.注销");
             System.out.println("8.退出登录");
             System.out.println("请选择(1-8)：");
@@ -136,16 +136,22 @@ public class UITest {
             switch (key){
                 case '1':
                     productsList();
+                    break;
                 case '2':
                     buy();
+                    break;
                 case '3':
                     customerDetail(username);
+                    break;
                 case '4':
                     updateCustomerByPersonal(username);
+                    break;
                 case '5':
                     addBalance(username);
+                    break;
                 case '6':
-                    updateCustomerByPersonal(username);
+                    levelUp();
+                    break;
                 case '7':
                     deleteCustomer(username);
                 case '8':
@@ -203,12 +209,16 @@ public class UITest {
                     System.out.println("请输入新密码：");
                     String newPassword0 = ViewUtility.readString();
                     customerController.changeCustomerPwd(cuname,oldPassword0,newPassword0);
+                    System.out.println("-----------------------按回车键返回-------------------------");
+                    ViewUtility.readReturn();
                 case '6':
                     System.out.println("请输入旧密码：");
                     String oldPassword = ViewUtility.readString();
                     System.out.println("请输入新密码：");
                     String newPassword = ViewUtility.readString();
                     usersManagerController.changeUsersManagerPwd(username,oldPassword,newPassword);
+                    System.out.println("-----------------------按回车键返回-------------------------");
+                    ViewUtility.readReturn();
                 case '7':
                     System.out.println("确认是否退出(Y/N)：");
                     char yn = ViewUtility.readConfirmSelection();
@@ -323,6 +333,8 @@ public class UITest {
         System.out.println("联系电话:" + customer.getContactPhone());
         System.out.println("邮箱:" + customer.getEmail());
         System.out.println("用户等级" + customer.getLevel());
+        System.out.println("-----------------------按回车键返回-------------------------");
+        ViewUtility.readReturn();
     }
 
     /**
@@ -352,6 +364,8 @@ public class UITest {
                 //转到用户个人页面
                 customerIndex(username);
             }else {
+                System.out.println("-----------------------按回车键返回-------------------------");
+                ViewUtility.readReturn();
                 break;
             }
         }
@@ -377,6 +391,8 @@ public class UITest {
         customer.setContactPhone(contactPhone);
         customer.setEmail(email);
         customerController.addCustomer(customer);
+        System.out.println("-----------------------按回车键返回-------------------------");
+        ViewUtility.readReturn();
     }
 
     private void updateCustomerByPersonal(String username) throws SQLException {
@@ -395,6 +411,8 @@ public class UITest {
         if (customerController.updateCustomer(customer)){
             System.out.println("---------------------------");
         }
+        System.out.println("-----------------------按回车键返回-------------------------");
+        ViewUtility.readReturn();
     }
 
     private void deleteCustomer(String username) throws SQLException {
@@ -407,6 +425,8 @@ public class UITest {
                 ViewUtility.readReturn();
             }
         }
+        System.out.println("-----------------------按回车键返回-------------------------");
+        ViewUtility.readReturn();
     }
 
     private void addBalance(String username) {
@@ -421,6 +441,27 @@ public class UITest {
             System.out.println("-----------------------按回车键返回-------------------------");
             ViewUtility.readReturn();
         }
+        System.out.println("-----------------------按回车键返回-------------------------");
+        ViewUtility.readReturn();
+    }
+
+    private void levelUp() {
+        System.out.println("-----------------------校园超市管理信息系统------------------");
+        System.out.println("--------------------------会员升级-------------------------");
+        System.out.println("每升一级10元");
+        System.out.println("等级优惠：1级9折，2级8折，3级7折");
+        System.out.println("请输入用户名:");
+        String username = ViewUtility.readString();
+        System.out.println("请输入密码:");
+        String password = ViewUtility.readString();
+        System.out.println("请输入等级(0,1,2,3):");
+        int level = ViewUtility.readInt();
+        if (customerController.upgradeLevel(username,password,level)){
+            System.out.println("-----------------------按回车键返回-------------------------");
+            ViewUtility.readReturn();
+        }
+        System.out.println("-----------------------按回车键返回-------------------------");
+        ViewUtility.readReturn();
     }
 
     public void addProduct(){
@@ -445,6 +486,8 @@ public class UITest {
         int quantity = ViewUtility.readInt();
         product.setQuantity(quantity);
         productController.addProduct(product);
+        System.out.println("-----------------------按回车键返回-------------------------");
+        ViewUtility.readReturn();
     }
 
     public void deleteProduct(){
@@ -456,6 +499,8 @@ public class UITest {
         char yn = ViewUtility.readConfirmSelection();
         if (yn == 'Y'){
             if (productController.deleteProduct(productName)){
+                System.out.println("-----------------------按回车键返回-------------------------");
+                ViewUtility.readReturn();
                 System.out.println("-------------------------------------------------");
             }
         }
@@ -485,31 +530,40 @@ public class UITest {
     public void usersList(){
         System.out.println("--------------------用户列表---------------------");
         List<Customer> customerList = customerController.findCustomers();
-        if (customerList.size() == 0){
+        if (customerList.size() != 0){
             System.out.println("用户编号(id)\t用户名(username)\t密码(password)\t用户余额(balance)\t真实姓名(realName)\t联系方式(contactPhone)\t邮箱(email)\t用户等级");
+        }else {
+            System.out.println("当前没有用户");
         }
         for (Customer c: customerList){
             System.out.println(" "+c.getId()+" "+c.getUsername()+" "+c.getPassword()+" "+c.getBalance()+
                     " "+c.getRealName()+" "+c.getCreationTime()+" "+c.getContactPhone()+" "+c.getEmail()+" "+c.getLevel());
         }
+        System.out.println("-----------------------按回车键返回-------------------------");
+        ViewUtility.readReturn();
         System.out.println("------------------------------------------------");
     }
 
     public void productsList(){
         System.out.println("--------------------商品列表---------------------");
         List<Product> productList = productController.findProducts();
-        if (productList.size() == 0){
+        if (productList.size() != 0){
             System.out.println("商品编号(id)\t商品名称(productName)\t价格(price)\t商品类别(type)\t生产日期(productionDate)\t库存量(quantity)\t销量(salesVolume)");
+        }else {
+            System.out.println("当前没有商品");
+            return;
         }
         for (Product p :productList){
             System.out.println(" "+p.getId()+" "+p.getProductName()+" "+p.getPrice()+" "+
                     p.getType()+" "+p.getProductionDate()+" "+p.getQuantity()+" "+p.getSalesVolume());
         }
+        System.out.println("-----------------------按回车键返回-------------------------");
+        ViewUtility.readReturn();
         System.out.println("------------------------------------------------");
     }
 
-    public static void main(String[] args) {
-        UI ui = new UI();
+    public static void main(String[] args) throws SQLException {
+        UITest ui = new UITest();
         ui.menu();
     }
 }
