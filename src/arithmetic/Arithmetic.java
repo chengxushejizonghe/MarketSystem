@@ -101,41 +101,7 @@ public class Arithmetic {
     		return customers;
     	}
 
-  //快速排序
 
-    /**public static List<Customer> quickSort1(List<Customer> customers) {//用户余额
-    	 
-		Customer pivot = customers.get(0); //可替换代码
-		//int mid = arr.size()/2;
-		//int pivot = arr.get(mid);
-		List<Customer> smaller = new ArrayList<Customer>(); //放置小于基准值的数据
-		List<Customer> bigger = new ArrayList<Customer>(); //放置大于基准值的数据
- 
-                //分解当前列表的数据
-		for(int i=1; i<customers.size();i++){ //替换i=0
-			//if(i == mid)
-			    //continue;
-			//else
-			if(pivot.getBalance() >= customers.get(0).getBalance()) 
-				smaller.add(customers.get(i));
-			else 
-				bigger.add(customers.get(i));
-		}
-        
-                //递归调用
-		if(smaller.size() > 1) 
-			quickSort1(smaller);
-		if(bigger.size() > 1) 
-			quickSort1(bigger);
- 
-		customers.removeAll(customers);
-		customers.addAll(smaller);
-		customers.add(pivot);
-		customers.addAll(bigger);
- 
-		return customers;
-	}
-    **/
     
     public static List<Customer> quickSort2(List<Customer> customers) {//会员等级
    	 
@@ -206,11 +172,4 @@ public class Arithmetic {
     
  }
 
-
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> branch 'master' of https://github.com/chengxushejizonghe/MarketSystem.git
 

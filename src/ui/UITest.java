@@ -1,4 +1,4 @@
-package test;
+package ui;
 
 import arithmetic.Arithmetic;
 import controller.CustomerController;
@@ -32,10 +32,10 @@ public class UITest {
         char key = 0;
         do {
             System.out.println("------------------校园超市管理信息系统------------------");
-            System.out.println("---------------------1-用户登录---------------------");
+            System.out.println("---------------------1-用户登录-----------------------");
             System.out.println("---------------------2-管理员登录---------------------");
-            System.out.println("---------------------3-用户注册---------------------");
-            System.out.println("---------------------4-退出系统---------------------");
+            System.out.println("---------------------3-用户注册-----------------------");
+            System.out.println("---------------------4-退出系统-----------------------");
             System.out.println("请选择(1-4)：");
             key = ViewUtility.readMenuSelection();
             System.out.println();
@@ -256,7 +256,7 @@ public class UITest {
             System.out.println("4.修改商品信息");
             System.out.println("5.补充或清理商品库存");
             System.out.println("6.退出");
-            System.out.println("请选择(1-5)：");
+            System.out.println("请选择(1-6)：");
             key = ViewUtility.readMenuSelection();
             switch (key){
                 case '1':
@@ -559,6 +559,7 @@ public class UITest {
         List<Customer> customerList = customerController.findCustomers();
         List<Customer> customerListAfterSort = new ArrayList<>();
         char yn = ViewUtility.readConfirmSelection();
+        System.out.println("是否排序（y/n）");
         if (yn == 'Y'){
             System.out.println("1.按用户余额排序");
             System.out.println("2.按用户等级排序");
@@ -634,7 +635,7 @@ public class UITest {
         }
         System.out.println("-----------------------按回车键返回-------------------------");
         ViewUtility.readReturn();
-        System.out.println("------------------------------------------------");
+        System.out.println("----------------------------------------------------------");
     }
 
     public static void main(String[] args) throws SQLException {
