@@ -559,7 +559,7 @@ public class UITest {
         List<Customer> customerList = customerController.findCustomers();
         List<Customer> customerListAfterSort = new ArrayList<>();
         char yn = ViewUtility.readConfirmSelection();
-        System.out.println("是否排序（y/n）");
+        System.out.println("是否排序（Y/N）");
         if (yn == 'Y'){
             System.out.println("1.按用户余额排序");
             System.out.println("2.按用户等级排序");
